@@ -1,16 +1,9 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, image }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -18,14 +11,16 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
-            author
+            twitterHandle
+            image
           }
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
+  const metaImage = image || site.siteMetadata.image;
 
   return (
     <Helmet
@@ -36,8 +31,12 @@ function SEO({ description, lang, meta, title }) {
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
-          name: `description`,
+          name: `keywords`,
           content: metaDescription,
+        },
+        {
+          name: `description`,
+          content: 'Aggelos Arvanitakis, react, redux, webperf, frontend',
         },
         {
           property: `og:title`,
@@ -48,6 +47,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
@@ -56,8 +59,16 @@ function SEO({ description, lang, meta, title }) {
           content: `summary`,
         },
         {
+          property: `twitter:image`,
+          content: metaImage,
+        },
+        {
+          property: `twitter:image:alt`,
+          content: 'Profile picture',
+        },
+        {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: `@${site.siteMetadata.twitterHandle}`,
         },
         {
           name: `twitter:title`,
@@ -67,22 +78,28 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `twitter:site`,
+          content: `@${site.siteMetadata.twitterHandle}`,
+        },
       ].concat(meta)}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+  image: ''
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+  image: PropTypes.string
+};
 
-export default SEO
+export default SEO;
