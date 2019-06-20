@@ -18,6 +18,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
@@ -28,16 +35,17 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Aggelos Arvanitakis | Personal Website`,
+        short_name: `Aggelos Arvanitakis`,
         start_url: `/`,
         background_color: `#887CFE`,
         theme_color: `#CC26E8`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
