@@ -1,10 +1,6 @@
 import React from 'react';
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import styled from '@emotion/styled';
-import TwitterSVG from '../icons/twitter.svg';
-import LinkedinSVG from '../icons/linkedin.svg';
-import MediumSVG from '../icons/medium.svg';
-import GithubSVG from '../icons/github.svg';
 
 const Wrapper = styled.header`
   display: flex;
