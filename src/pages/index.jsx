@@ -7,18 +7,19 @@ import SEO from '../components/SEO';
 import Button from '../components/Button';
 
 const MainHeading = styled.h1`
-  font-size: 3.5rem;
+  font-family: 'Playfair Display', 'FuturaNew', sans-serif;
+  font-size: 4rem;
 
   @media only screen and (min-width: 768px) {
-    font-size: 4.5rem;
+    font-size: 6.5rem;
   }
 
   @media only screen and (min-width: 1200px) {
-    font-size: 7rem;
+    font-size: 8rem;
   }
 
   @media only screen and (min-width: 1600px) {
-    font-size: 8rem;
+    font-size: 10rem;
   }
 `;
 
@@ -36,10 +37,11 @@ const Content = styled.div`
 `;
 
 const Description = styled.p`
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.15rem;
   line-height: 1.5rem;
   max-width: 600px;
   margin: ${({ theme }) => `${theme.spacing.md} 0`};
+  color: ${({ theme }) => theme.colors.grey};
 
   @media only screen and (max-width: 767px) {
     letter-spacing: 0.1rem;
@@ -101,7 +103,7 @@ const IndexPage = () => (
           <br />
           #react #apollo #redux #webperf
         </Description>
-        <Link to="/publications/">
+        <Link to="/about">
           <CtaButton tabIndex="-1">Learn more</CtaButton>
         </Link>
       </Content>
