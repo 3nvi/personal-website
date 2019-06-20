@@ -3,25 +3,10 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import heroImageSrc from '../images/hero.jpg';
 import Layout from '../components/Layout';
+import Heading from '../components/Heading';
+import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
-
-const MainHeading = styled.h1`
-  font-family: 'Playfair Display', 'FuturaNew', sans-serif;
-  font-size: 4rem;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 6.5rem;
-  }
-
-  @media only screen and (min-width: 1200px) {
-    font-size: 8rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 10rem;
-  }
-`;
 
 const ContentWrapper = styled.div`
   height: 100%;
@@ -33,18 +18,6 @@ const ContentWrapper = styled.div`
 const Content = styled.div`
   @media only screen and (max-width: 767px) {
     transform: ${({ theme }) => `translate3d(0, ${theme.spacing.xxl}, 0)`};
-  }
-`;
-
-const Description = styled.p`
-  letter-spacing: 0.15rem;
-  line-height: 1.5rem;
-  max-width: 600px;
-  margin: ${({ theme }) => `${theme.spacing.md} 0`};
-  color: ${({ theme }) => theme.colors.grey};
-
-  @media only screen and (max-width: 767px) {
-    letter-spacing: 0.1rem;
   }
 `;
 
@@ -95,16 +68,16 @@ const IndexPage = () => (
     />
     <ContentWrapper>
       <Content>
-        <MainHeading>
+        <Heading>
           Aggelos <br /> Arvanitakis
-        </MainHeading>
-        <Description>
+        </Heading>
+        <Text spaced>
           Front end engineer specializing in React with a focus on performance. Love huskies, really
           afraid of bees.
           <br />
           <br />
           #react #apollo #redux #webperf
-        </Description>
+        </Text>
         <Link to="/about">
           <CtaButton tabIndex="-1">Learn more</CtaButton>
         </Link>

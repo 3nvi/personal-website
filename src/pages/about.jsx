@@ -4,26 +4,10 @@ import { Link, graphql } from 'gatsby';
 import Avatar from '../images/morocco2.jpg';
 import RehypeReact from 'rehype-react';
 import Layout from '../components/Layout';
+import Heading from '../components/Heading';
+import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
-
-const MainHeading = styled.h1`
-  font-family: 'Playfair Display', 'FuturaNew', sans-serif;
-  font-size: 4rem;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 6.5rem;
-    word-spacing: 100vw;
-  }
-
-  @media only screen and (min-width: 1200px) {
-    font-size: 8rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 10rem;
-  }
-`;
 
 const ContentWrapper = styled.div`
   height: 100%;
@@ -41,13 +25,6 @@ const Content = styled.div`
     width: 100%;
     margin: ${({ theme }) => `${theme.spacing.lg} 0`};
   }
-`;
-
-const BioParagraph = styled.p`
-  max-width: 500px;
-  line-height: 1.7rem;
-  margin: ${({ theme }) => `${theme.spacing.md} 0`};
-  color: ${({ theme }) => theme.colors.grey};
 `;
 
 const CtaButton = styled(Button)`
@@ -68,7 +45,7 @@ const HeroImage = styled.img`
     height: 100vh;
     top: 0;
     right: 0;
-    opacity: 0.1;
+    opacity: 0.08;
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
@@ -83,8 +60,8 @@ const HeroImage = styled.img`
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
-    h1: MainHeading,
-    p: BioParagraph,
+    h1: Heading,
+    p: Text,
   },
 }).Compiler;
 
