@@ -60,10 +60,12 @@ const HeroImage = styled.img`
     left: -20%;
   }
 
-  @media only screen and (min-width: 768px) {
-    width: 300px;
-    height: 300px;
-    transform: translateX(-50px);
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 275px;
+    height: 275px;
+    transform: translate3d(50px, -80px, 0);
+    position: absolute;
+    right: 0;
   }
 
   @media only screen and (min-width: 1200px) {
