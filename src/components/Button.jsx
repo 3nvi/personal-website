@@ -20,7 +20,7 @@ const Button = styled.button`
   width: ${props => (props.fullWidth ? '100%' : 'unset')};
 
   &:hover {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.065, 1.065);
   }
 `;
 

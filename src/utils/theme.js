@@ -12,6 +12,6 @@ export default {
     accent: '#CC26E8',
     black: '#28313B',
     white: '#fff',
-    grey: '#9B9B9B',
+    grey: '#8B8B8B',
   },
 };
