@@ -68,9 +68,7 @@ const IndexPage = () => (
     />
     <ContentWrapper>
       <Content>
-        <Heading>
-          Aggelos <br /> Arvanitakis
-        </Heading>
+        <Heading>Aggelos Arvanitakis</Heading>
         <Text spaced>
           Front end engineer specializing in React with a focus on performance. Love huskies, really
           afraid of bees.
