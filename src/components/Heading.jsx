@@ -1,8 +1,9 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
 
 const Heading = styled.h1`
   font-family: 'Playfair Display', 'FuturaNew', sans-serif;
   font-size: 4rem;
+  word-spacing: 100vw;
 
   @media only screen and (min-width: 768px) {
     font-size: 6.5rem;
