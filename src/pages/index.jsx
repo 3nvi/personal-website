@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
-import heroImageSrc from '../images/hero.jpg';
+import { Link, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import Text from '../components/Text';
@@ -19,16 +19,24 @@ const Content = styled.div`
   @media only screen and (max-width: 767px) {
     transform: ${({ theme }) => `translate3d(0, ${theme.spacing.xxl}, 0)`};
   }
+
+  @media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    transform: translateX(100px);
+  }
+
+  @media only screen and (min-width: 1600px) {
+    transform: translateX(150px);
+  }
 `;
 
-const HeroImage = styled.img`
-  object-fit: contain;
+const HeroImgResponsiveWrapper = styled.div`
   z-index: -1;
+  flex: 1 0 auto;
 
   @media only screen and (max-width: 767px) {
+    position: absolute;
     width: 300px;
     height: 300px;
-    position: absolute;
     top: -5%;
     left: -20%;
   }
@@ -36,7 +44,7 @@ const HeroImage = styled.img`
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
     width: 275px;
     height: 275px;
-    transform: translate3d(50px, -80px, 0);
+    transform: translate3d(-70px, -120px, 0);
     position: absolute;
     right: 0;
   }
@@ -60,7 +68,7 @@ const CtaButton = styled(Button)`
   }
 `;
 
-const IndexPage = () => (
+const IndexPage = props => (
   <Layout>
     <SEO
       title="Home"
@@ -80,9 +88,27 @@ const IndexPage = () => (
           <CtaButton tabIndex="-1">Learn more</CtaButton>
         </Link>
       </Content>
-      <HeroImage src={heroImageSrc} alt="Portrait picture" />
+      <HeroImgResponsiveWrapper>
+        <Img
+          style={{ width: '100%', height: '100%' }}
+          fixed={props.data.heroImage.childImageSharp.fixed}
+          alt="Personal Portrait"
+        />
+      </HeroImgResponsiveWrapper>
     </ContentWrapper>
   </Layout>
 );
 
 export default IndexPage;
+
+export const query = graphql`
+  query {
+    heroImage: file(name: { eq: "hero" }) {
+      childImageSharp {
+        fixed(quality: 85, width: 550, height: 550, toFormat: JPG) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
+  }
+`;
