@@ -92,7 +92,7 @@ const IndexPage = props => (
         <Img
           style={{ width: '100%', height: '100%' }}
           fixed={props.data.heroImage.childImageSharp.fixed}
-          alt="Personal Portrait"
+          alt="Duotone close-up Portrait"
         />
       </HeroImgResponsiveWrapper>
     </ContentWrapper>
