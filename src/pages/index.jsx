@@ -77,13 +77,11 @@ const IndexPage = props => (
     <ContentWrapper>
       <Content>
         <Heading>Aggelos Arvanitakis</Heading>
-        <Text spaced>
-          Front end engineer specializing in React with a focus on performance. Love huskies, really
-          afraid of bees.
-          <br />
-          <br />
-          #react #apollo #redux #webperf
-        </Text>
+        <Text
+          spaced
+          dangerouslySetInnerHTML={{ __html: props.data.statement.childMarkdownRemark.html }}
+        />
+
         <Link to="/about">
           <CtaButton tabIndex="-1">Learn more</CtaButton>
         </Link>
@@ -103,7 +101,12 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    heroImage: file(name: { eq: "hero" }) {
+    statement: file(relativeDirectory: { eq: "index" }, name: { eq: "statement" }) {
+      childMarkdownRemark {
+        html
+      }
+    }
+    heroImage: file(relativeDirectory: { eq: "index" }, name: { eq: "hero" }) {
       childImageSharp {
         fixed(quality: 85, width: 550, height: 550, toFormat: JPG) {
           ...GatsbyImageSharpFixed_withWebp_noBase64

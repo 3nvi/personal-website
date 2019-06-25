@@ -96,12 +96,12 @@ export default AboutPage;
 
 export const query = graphql`
   query {
-    bio: file(name: { eq: "bio" }) {
+    bio: file(relativeDirectory: { eq: "bio" }, name: { eq: "bio" }) {
       childMarkdownRemark {
         htmlAst
       }
     }
-    heroImage: file(name: { eq: "morocco" }) {
+    heroImage: file(relativeDirectory: { eq: "bio" }, name: { eq: "hero" }) {
       childImageSharp {
         fixed(quality: 85, width: 400, toFormat: JPG) {
           ...GatsbyImageSharpFixed_withWebp_noBase64
