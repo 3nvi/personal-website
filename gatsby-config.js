@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Aggelos Arvanitakis',
-    description: 'Personal website of Aggelos Arvanitakis showcasing work & contributions',
+    description: 'Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching. I know & teach React, Svelte, Redux, Apollo, Webperf',
     image: '',
     mediumHandle: `aggelosarvanitakis`,
     twitterHandle: `aggarvanitakis`,

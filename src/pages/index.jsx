@@ -70,10 +70,7 @@ const CtaButton = styled(Button)`
 
 const IndexPage = props => (
   <Layout>
-    <SEO
-      title="Home"
-      description="Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching."
-    />
+    <SEO title="Home" />
     <ContentWrapper>
       <Content>
         <Heading>Aggelos Arvanitakis</Heading>
@@ -81,7 +78,6 @@ const IndexPage = props => (
           spaced
           dangerouslySetInnerHTML={{ __html: props.data.statement.childMarkdownRemark.html }}
         />
-
         <Link to="/about">
           <CtaButton tabIndex="-1">Learn more</CtaButton>
         </Link>

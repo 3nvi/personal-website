@@ -71,15 +71,11 @@ const renderAst = new RehypeReact({
 
 const AboutPage = ({ data }) => (
   <Layout>
-    <SEO
-      title="Home"
-      description="Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching."
-    />
+    <SEO title="About" />
     <ContentWrapper>
       <Content>
         <BioWrapper>
           {renderAst(data.bio.childMarkdownRemark.htmlAst)}
-
           <Link to="/publications/">
             <CtaButton tabIndex="-1">Check out what I do</CtaButton>
           </Link>
