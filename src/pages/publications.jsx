@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import MagicGrid from 'magic-grid';
 import Layout from '../components/Layout';
-import Heading from '../components/Heading';
 import Publication from '../components/Publication';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
-import Button from '../components/Button';
 
 const ContentWrapper = styled.div`
   height: 100%;
@@ -150,7 +147,7 @@ const PublicationsPage = props => {
 export default PublicationsPage;
 
 export const query = graphql`
-  fragment Asset on MarkdownRemark {
+  fragment Publication on MarkdownRemark {
     frontmatter {
       banner {
         childImageSharp {
@@ -170,19 +167,21 @@ export const query = graphql`
   query {
     articles: allMarkdownRemark(
       filter: { fileAbsolutePath: { glob: "**/publications/articles/**/index.md" } }
+      sort: { fields: frontmatter___createdAt, order: DESC }
     ) {
       edges {
         node {
-          ...Asset
+          ...Publication
         }
       }
     }
     podcasts: allMarkdownRemark(
       filter: { fileAbsolutePath: { glob: "**/publications/podcasts/**/index.md" } }
+      sort: { fields: frontmatter___createdAt, order: DESC }
     ) {
       edges {
         node {
-          ...Asset
+          ...Publication
         }
       }
     }

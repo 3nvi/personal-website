@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import dayjs from 'dayjs';
 import Img from 'gatsby-image';
 import Text from './Text';
 
@@ -70,7 +71,7 @@ function Publication({
         </Anchor>
       </header>
       <Meta>
-        <date>{createdAt}</date>
+        <date>{dayjs(createdAt).format('DD MMM YYYY')}</date>
         <Separator />
         <time>{timeInMinutes} min</time>
       </Meta>
