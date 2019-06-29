@@ -3,10 +3,6 @@ module.exports = {
     title: 'Aggelos Arvanitakis',
     description: 'Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching. I know & teach React, Svelte, Redux, Apollo, Webperf',
     image: '',
-    mediumHandle: `aggelosarvanitakis`,
-    twitterHandle: `aggarvanitakis`,
-    githubHandle: `3nvi`,
-    linkedinHandle: `aggelos-arvanitakis-42121664`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
