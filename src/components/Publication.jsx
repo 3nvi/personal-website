@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import Img from 'gatsby-image';
 import Text from './Text';
 
-const Container = styled.article`
+const ArticleWell = styled.article`
   padding: 20px;
   border: ${({ theme }) => `1px solid ${theme.colors.lightgrey}`};
   border-radius: 2px;
@@ -51,22 +51,12 @@ const Anchor = styled.a`
   }
 `;
 
-function Publication({
-  href,
-  title,
-  createdAt,
-  timeInMinutes,
-  description,
-  gatsbyImgType,
-  gatsbyImgData,
-}) {
-  const gatsbyImgProps = { [gatsbyImgType]: gatsbyImgData };
-
+function Publication({ href, title, createdAt, timeInMinutes, description, bannerImgData }) {
   return (
-    <Container>
+    <ArticleWell>
       <header>
         <Anchor href={href} rel="noopener noreferrer" target="_blank">
-          <ArticleBanner alt="Article Banner" {...gatsbyImgProps} />
+          <ArticleBanner alt="Article Banner" fluid={bannerImgData} />
           <ArticleHeading>{title}</ArticleHeading>
         </Anchor>
       </header>
@@ -76,7 +66,7 @@ function Publication({
         <time>{timeInMinutes} min</time>
       </Meta>
       <Text>{description}</Text>
-    </Container>
+    </ArticleWell>
   );
 }
 
@@ -85,8 +75,7 @@ Publication.propTypes = {
   createdAt: PropTypes.string.isRequired,
   timeInMinutes: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
-  gatsbyImgType: PropTypes.oneOf(['fluid', 'fixed']),
-  gatsbyImgData: PropTypes.object.isRequired,
+  bannerImgData: PropTypes.object.isRequired,
 };
 
 Publication.defaultProps = {};
