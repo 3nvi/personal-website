@@ -7,15 +7,11 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
+import Container from '../components/Container';
 
-const ContentWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const Summary = styled.div`
+  flex-grow: 1;
 
-const Content = styled.div`
   @media only screen and (max-width: 767px) {
     transform: ${({ theme }) => `translate3d(0, ${theme.spacing.xxl}, 0)`};
   }
@@ -31,13 +27,13 @@ const Content = styled.div`
 
 const HeroImgResponsiveWrapper = styled.div`
   z-index: -1;
-  flex: 1 0 auto;
+  flex: 0 1 auto;
 
   @media only screen and (max-width: 767px) {
     position: absolute;
     width: 300px;
     height: 300px;
-    top: -5%;
+    top: -7%;
     left: -20%;
   }
 
@@ -49,7 +45,7 @@ const HeroImgResponsiveWrapper = styled.div`
     right: 0;
   }
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1200px) and (max-width: 1599px) {
     width: 400px;
     height: 400px;
     transform: translateX(-100px);
@@ -62,26 +58,25 @@ const HeroImgResponsiveWrapper = styled.div`
   }
 `;
 
-const CtaButton = styled(Button)`
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
 const IndexPage = props => (
   <Layout>
     <SEO title="Home" />
-    <ContentWrapper>
-      <Content>
-        <Heading>Aggelos Arvanitakis</Heading>
-        <Text
-          spaced
-          dangerouslySetInnerHTML={{ __html: props.data.statement.childMarkdownRemark.html }}
-        />
+    <Container contentDirection="row" contentJustification="center">
+      <Summary>
+        <Heading>
+          Aggelos <br /> Arvanitakis
+        </Heading>
+        <Text limited spaced>
+          Front-end engineer specializing in React with a focus on performance. Love huskies, really
+          afraid of bees.
+          <br />
+          <br />
+          #react #apollo #redux #webperf
+        </Text>
         <Link to="/about">
-          <CtaButton tabIndex="-1">Learn more</CtaButton>
+          <Button tabIndex="-1">Not a bee? Click here</Button>
         </Link>
-      </Content>
+      </Summary>
       <HeroImgResponsiveWrapper>
         <Img
           style={{ width: '100%', height: '100%' }}
@@ -89,7 +84,7 @@ const IndexPage = props => (
           alt="Duotone close-up Portrait"
         />
       </HeroImgResponsiveWrapper>
-    </ContentWrapper>
+    </Container>
   </Layout>
 );
 
@@ -97,11 +92,6 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    statement: file(relativeDirectory: { eq: "index" }, name: { eq: "statement" }) {
-      childMarkdownRemark {
-        html
-      }
-    }
     heroImage: file(relativeDirectory: { eq: "index" }, name: { eq: "hero" }) {
       childImageSharp {
         fixed(quality: 85, width: 550, height: 550, toFormat: JPG) {
