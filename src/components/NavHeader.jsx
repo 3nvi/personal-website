@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
-const Wrapper = styled.header`
+const FlexWrapper = styled.header`
   display: flex;
   align-items: center;
 `;
@@ -132,11 +132,11 @@ const HomeLink = styled(PageLink)`
   }
 `;
 
-const Header = () => {
+const NavHeader = () => {
   const [isMobileMenuVisible, setMobileMenuVisibility] = React.useState(false);
 
   return (
-    <Wrapper>
+    <FlexWrapper>
       <Nav>
         <NavGroup>
           <NavGroupItem>
@@ -166,12 +166,12 @@ const Header = () => {
         isOpen={isMobileMenuVisible}
         onClick={() => setMobileMenuVisibility(!isMobileMenuVisible)}
       />
-    </Wrapper>
+    </FlexWrapper>
   );
 };
 
-Header.defaultProps = {
+NavHeader.defaultProps = {
   siteTitle: ``,
 };
 
-export default Header;
+export default NavHeader;
