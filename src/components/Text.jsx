@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const Text = styled.p(props => ({
-  maxWidth: props.unlimited ? undefined : '500px',
+  maxWidth: props.limited ? '500px' : undefined,
   lineHeight: '1.7rem',
   margin: `${props.theme.spacing.md} 0`,
   color: props.theme.colors.grey,
@@ -16,12 +16,12 @@ const Text = styled.p(props => ({
 
 Text.propTypes = {
   spaced: PropTypes.bool,
-  unlimited: PropTypes.bool,
+  limited: PropTypes.bool,
 };
 
 Text.defaultProps = {
   spaced: false,
-  unlimited: false,
+  limited: false,
 };
 
 export default Text;
