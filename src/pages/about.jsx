@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import RehypeReact from 'rehype-react';
@@ -8,83 +9,61 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
+import Container from '../components/Container';
+import Column from '../components/Column';
+import Grid from '../components/Grid';
 
-const ContentWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Content = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-
+const mobileHeadingStyle = css`
   @media only screen and (max-width: 767px) {
-    width: 100%;
-    margin: ${({ theme }) => `${theme.spacing.lg} 0`};
+    border-bottom: 0.5rem solid;
+    border-top: 0.5rem solid;
+    padding: 1rem 0;
   }
-`;
-
-const CtaButton = styled(Button)`
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
-const BioWrapper = styled.div`
-  max-width: 700px;
 `;
 
 const HeroImageResponsiveWrapper = styled.div`
-  @media only screen and (max-width: 767px) {
-    transform: translateX(55%);
-    position: fixed;
-    width: 66vh;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    opacity: 0.05;
-    z-index: -1;
-
-    .gatsby-image-wrapper {
-      width: 100% !important;
-      height: 100% !important;
-    }
-  }
-
   @media only screen and (min-width: 768px) and (max-width: 1199px) {
     transform: translateX(55%);
     position: absolute;
     right: 0;
+  }
+
+  @media only screen and (max-width: 767px) {
+    display: none;
   }
 `;
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
-    h1: Heading,
-    p: Text,
+    h1: props => <Heading css={mobileHeadingStyle} {...props} />,
+    p: props => <Text limited {...props} />,
   },
 }).Compiler;
 
 const AboutPage = ({ data }) => (
   <Layout>
     <SEO title="About" />
-    <ContentWrapper>
-      <Content>
-        <BioWrapper>
-          {renderAst(data.bio.childMarkdownRemark.htmlAst)}
-          <Link to="/publications/">
-            <CtaButton tabIndex="-1">Check out what I do</CtaButton>
-          </Link>
-        </BioWrapper>
-        <HeroImageResponsiveWrapper>
-          <Img fixed={data.heroImage.childImageSharp.fixed} alt="Grayscale Portrait in Morocco" />
-        </HeroImageResponsiveWrapper>
-      </Content>
-    </ContentWrapper>
+    <Container>
+      <Grid>
+        <Column mobile={16} tablet={16} computer={14} largeMonitor={10} centered>
+          <Container contentDirection="row" contentJustification="space-between">
+            <div>
+              {renderAst(data.bio.childMarkdownRemark.htmlAst)}
+              <Link to="/publications/">
+                <Button tabIndex="-1">Still interested?!</Button>
+              </Link>
+            </div>
+            <HeroImageResponsiveWrapper>
+              <Img
+                fixed={data.heroImage.childImageSharp.fixed}
+                alt="Grayscale Portrait in Morocco"
+              />
+            </HeroImageResponsiveWrapper>
+          </Container>
+        </Column>
+      </Grid>
+    </Container>
   </Layout>
 );
 
