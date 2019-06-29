@@ -1,18 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: 'Aggelos Arvanitakis',
-    description: 'Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching. I know & teach React, Svelte, Redux, Apollo, Webperf',
-    image: '',
+    description:
+      'Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching. I know & teach React, Svelte, Redux, Apollo, Webperf',
+    image: `static/main.jpg`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -41,7 +35,7 @@ module.exports = {
         background_color: `#887CFE`,
         theme_color: `#CC26E8`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        icon: `static/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

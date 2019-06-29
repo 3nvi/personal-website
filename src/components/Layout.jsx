@@ -6,10 +6,10 @@ import theme from '../utils/theme';
 import NavHeader from './NavHeader';
 import './layout.css';
 import { twitterHandle, githubHandle, linkedinHandle, mediumHandle } from '../utils/constants';
-import TwitterSVG from '../icons/twitter.svg';
-import MediumSVG from '../icons/medium.svg';
-import GithubSVG from '../icons/github.svg';
-import LinkedinSVG from '../icons/linkedin.svg';
+import TwitterSVG from '../assets/icons/twitter.svg';
+import MediumSVG from '../assets/icons/medium.svg';
+import GithubSVG from '../assets/icons/github.svg';
+import LinkedinSVG from '../assets/icons/linkedin.svg';
 
 const ResponsiveWrapper = styled.div`
   position: relative;

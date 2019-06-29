@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/Futura-Book.woff') format('woff');
+  src: url('../assets/fonts/Futura-Book.woff') format('woff');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('../fonts/Futura-Bold.woff') format('woff');
+  src: url('../assets/fonts/Futura-Bold.woff') format('woff');
 }
 
 @font-face {
