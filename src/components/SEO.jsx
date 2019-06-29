@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { twitterHandle } from '../utils/constants';
 import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, lang, meta, title, image }) {
@@ -11,7 +12,6 @@ function SEO({ description, lang, meta, title, image }) {
           siteMetadata {
             title
             description
-            twitterHandle
             image
           }
         }
@@ -68,7 +68,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `twitter:creator`,
-          content: `@${site.siteMetadata.twitterHandle}`,
+          content: `@${twitterHandle}`,
         },
         {
           name: `twitter:title`,
@@ -80,7 +80,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `twitter:site`,
-          content: `@${site.siteMetadata.twitterHandle}`,
+          content: `@${twitterHandle}`,
         },
       ].concat(meta)}
     />
