@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../utils/theme';
-import Header from './Header';
+import NavHeader from './NavHeader';
 import './layout.css';
+import { twitterHandle, githubHandle, linkedinHandle, mediumHandle } from '../utils/constants';
 import TwitterSVG from '../icons/twitter.svg';
 import MediumSVG from '../icons/medium.svg';
 import GithubSVG from '../icons/github.svg';
 import LinkedinSVG from '../icons/linkedin.svg';
 
-const Container = styled.div`
+const ResponsiveWrapper = styled.div`
   position: relative;
   margin: auto;
   padding: 20px;
@@ -42,6 +42,12 @@ const Container = styled.div`
 
   @media only screen and (min-width: 1600px) {
     width: 1600px;
+  }
+`;
+
+const Main = styled.main`
+  @media only screen and (max-width: 767px) {
+    margin: ${({ theme }) => `${theme.spacing.xl} 0 ${theme.spacing.lg} 0`};
   }
 `;
 
@@ -98,62 +104,46 @@ const Copyright = styled.p`
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <Container>
-      <Header />
-      <main>{children}</main>
+    <ResponsiveWrapper>
+      <NavHeader />
+      <Main>{children}</Main>
       <footer>
-        <StaticQuery
-          query={graphql`
-            query SiteThirdPartyServicesQuery {
-              site {
-                siteMetadata {
-                  linkedinHandle
-                  twitterHandle
-                  githubHandle
-                  mediumHandle
-                }
-              }
-            }
-          `}
-          render={data => (
-            <ExternalServices>
-              <ExternalServiceFabLink
-                title="Twitter"
-                aria-label="Twitter"
-                href={`https://twitter.com/${data.site.siteMetadata.twitterHandle}`}
-              >
-                <TwitterSVG />
-              </ExternalServiceFabLink>
+        <ExternalServices>
+          <ExternalServiceFabLink
+            title="Twitter"
+            aria-label="Twitter"
+            href={`https://twitter.com/${twitterHandle}`}
+          >
+            <TwitterSVG />
+          </ExternalServiceFabLink>
 
-              <ExternalServiceFabLink
-                title="Medium"
-                aria-label="Medium"
-                href={`https://medium.com/@${data.site.siteMetadata.mediumHandle}`}
-              >
-                <MediumSVG />
-              </ExternalServiceFabLink>
+          <ExternalServiceFabLink
+            title="Medium"
+            aria-label="Medium"
+            href={`https://medium.com/@${mediumHandle}`}
+          >
+            <MediumSVG />
+          </ExternalServiceFabLink>
 
-              <ExternalServiceFabLink
-                title="Github"
-                aria-label="Github"
-                href={`https://github.com/${data.site.siteMetadata.githubHandle}`}
-              >
-                <GithubSVG />
-              </ExternalServiceFabLink>
+          <ExternalServiceFabLink
+            title="Github"
+            aria-label="Github"
+            href={`https://github.com/${githubHandle}`}
+          >
+            <GithubSVG />
+          </ExternalServiceFabLink>
 
-              <ExternalServiceFabLink
-                title="Linkedin"
-                aria-label="Linkedin"
-                href={`https://NavGroupItemnkedin.com/in/${data.site.siteMetadata.linkedinHandle}`}
-              >
-                <LinkedinSVG />
-              </ExternalServiceFabLink>
-            </ExternalServices>
-          )}
-        />
+          <ExternalServiceFabLink
+            title="Linkedin"
+            aria-label="Linkedin"
+            href={`https://NavGroupItemnkedin.com/in/${linkedinHandle}`}
+          >
+            <LinkedinSVG />
+          </ExternalServiceFabLink>
+        </ExternalServices>
         <Copyright>© Aggelos Arvanitakis</Copyright>
       </footer>
-    </Container>
+    </ResponsiveWrapper>
   </ThemeProvider>
 );
 
