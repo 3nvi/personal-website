@@ -82,8 +82,9 @@ function Publication({
             publisher: {
               '@type': 'Organization',
               name: publisher,
+              logo: null,
             },
-            creator: {
+            author: {
               '@type': 'Person',
               name: 'Aggelos Arvanitakis',
               url: '/',
