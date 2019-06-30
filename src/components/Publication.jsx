@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import Img from 'gatsby-image';
 import Helmet from 'react-helmet';
 import Text from './Text';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const ArticleWell = styled.article`
   padding: 20px;
@@ -62,6 +63,19 @@ function Publication({
   publisher,
 }) {
   const creationDateToIso = createdAt.replace(/\//, '-');
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            image
+            logo
+          }
+        }
+      }
+    `
+  );
+
   return (
     <ArticleWell>
       <Helmet>
@@ -82,13 +96,13 @@ function Publication({
             publisher: {
               '@type': 'Organization',
               name: publisher,
-              logo: '/icons/icon-512x512.png',
+              logo: site.siteMetadata.logo,
             },
             author: {
               '@type': 'Person',
               name: 'Aggelos Arvanitakis',
               url: '/',
-              image: '/img/main.jpg',
+              image: site.siteMetadata.image,
             },
           })}
         </script>

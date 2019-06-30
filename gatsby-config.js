@@ -4,6 +4,7 @@ module.exports = {
     description:
       'Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching. I know & teach React, Svelte, Redux, Apollo, Webperf',
     image: `/img/main.jpg`,
+    logo: `/img/favicon.png`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +12,13 @@ module.exports = {
       resolve: 'gatsby-plugin-preconnect',
       options: {
         domains: ['https://fonts.gstatic.com'],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `static`,
+        path: `${__dirname}/static`,
       },
     },
     {

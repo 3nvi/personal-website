@@ -8,6 +8,7 @@ import Text from './Text';
 import Button from './Button';
 import 'react-image-lightbox/style.css';
 import Helmet from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const clickableImgStyle = css`
   border-radius: 4px;
@@ -120,6 +121,18 @@ function Project({
   screenshotListImgData,
   githubUrl,
 }) {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            image
+          }
+        }
+      }
+    `
+  );
+
   const [isLightboxVisible, setLightboxVisibility] = React.useState(false);
   const [lightboxImgIndex, setLightboxImgIndex] = React.useState(null);
 
@@ -151,7 +164,7 @@ function Project({
               '@type': 'Person',
               name: 'Aggelos Arvanitakis',
               url: '/',
-              image: '/img/main.jpg',
+              image: site.siteMetadata.image,
             },
           })}
         </script>
