@@ -67,6 +67,8 @@ const MobileNavGroupJewel = styled.button`
   right: ${({ theme }) => theme.spacing.sm};
   z-index: 1009;
   padding: 15px;
+  background: none;
+  border: none;
 
   @media only screen and (min-width: 768px) {
     display: none;
