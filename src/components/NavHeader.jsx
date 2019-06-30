@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 
 const FlexWrapper = styled.header`
@@ -36,7 +37,9 @@ const NavGroup = styled.ul`
 `;
 
 const NavGroupItem = styled.li`
-  display: inherit;
+  display: flex;
+  align-items: center;
+
   a {
     position: relative;
     letter-spacing: 0.2rem;
@@ -135,11 +138,26 @@ const HomeLink = styled(PageLink)`
 const NavHeader = () => {
   const [isMobileMenuVisible, setMobileMenuVisibility] = React.useState(false);
 
+  const { logo } = useStaticQuery(
+    graphql`
+      query {
+        logo: file(name: { eq: "favicon" }, relativeDirectory: { eq: "img" }) {
+          childImageSharp {
+            fixed(width: 30, height: 30) {
+              ...GatsbyImageSharpFixed_withWebp_noBase64
+            }
+          }
+        }
+      }
+    `
+  );
+
   return (
     <FlexWrapper>
       <Nav>
         <NavGroup>
           <NavGroupItem>
+            <Img fixed={logo.childImageSharp.fixed} alt="logo" />
             <HomeLink to="/">Aggelos.</HomeLink>
           </NavGroupItem>
         </NavGroup>
@@ -168,10 +186,6 @@ const NavHeader = () => {
       />
     </FlexWrapper>
   );
-};
-
-NavHeader.defaultProps = {
-  siteTitle: ``,
 };
 
 export default NavHeader;
