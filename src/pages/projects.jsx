@@ -58,8 +58,8 @@ const ProjectsPage = props => {
               <Heading size="small">Open Source & Fun Projects</Heading>
             </Section.Header>
             <Text>
-              This is a list of projects that I have either open-sourced or developed for fun. They
-              all were "fun" in the beginning at least...
+              This is a list of projects that I have either open-sourced or developed for fun. At
+              least they were all "fun" in the beginning...
             </Text>
             <ul id="fun-projects">
               {props.data.funProjects.edges.map(({ node: { frontmatter: project } }) => (
