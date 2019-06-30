@@ -7,6 +7,7 @@ import Lightbox from 'react-image-lightbox';
 import Text from './Text';
 import Button from './Button';
 import 'react-image-lightbox/style.css';
+import Helmet from 'react-helmet';
 
 const clickableImgStyle = css`
   border-radius: 4px;
@@ -134,6 +135,27 @@ function Project({
 
   return (
     <ProjectBox>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'http://schema.org/',
+            '@type': 'CreativeWork',
+            headline: title,
+            about: description,
+            url: href,
+            thumbnailUrl: bannerImgData.originalImg,
+            image: bannerImgData.originalImg,
+            keywords: tags.join(','),
+            sameAs: githubUrl,
+            creator: {
+              '@type': 'Person',
+              name: 'Aggelos Arvanitakis',
+              url: '/',
+              image: '/img/main.jpg',
+            },
+          })}
+        </script>
+      </Helmet>
       <DetailsBox>
         <header>
           <a href={href} rel="noopener noreferrer" target="_blank">

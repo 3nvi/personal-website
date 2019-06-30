@@ -91,7 +91,6 @@ function Publication({
             },
           })}
         </script>
-        ;
       </Helmet>
       <header>
         <Anchor href={href} rel="noopener noreferrer" target="_blank">
