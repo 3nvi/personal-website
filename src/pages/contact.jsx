@@ -107,7 +107,7 @@ const ContactPage = () => {
               If you still wanna get in touch with me after seeing my face in the landing page, then
               please fill this form and I'll get back to you within a few hours. Alternatively, you
               can email me directly at{' '}
-              <a href="mailto:agg.arvanitakis@gmail.com">agg.arvanitakis@gmail.com</a>.
+              <a href="mailto:contact@aggelosarvanitakis.me">contact@aggelosarvanitakis.me</a>.
             </Text>
             {isMessageSent ? (
               <SuccessBox>Your message has been sent!</SuccessBox>
