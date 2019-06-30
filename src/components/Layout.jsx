@@ -29,14 +29,15 @@ const ResponsiveWrapper = styled.div`
   }
 
   @meida only screen and (max-width: 768px) {
+    width: 100%;
     padding: 20px 10px;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
     width: 768px;
   }
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1200px) and (max-width: 1599px) {
     width: 1200px;
   }
 
@@ -95,8 +96,15 @@ const ExternalServiceFabLink = styled(({ children, ...rest }) => (
   }
 `;
 
+const Footer = styled.footer`
+  position: relative;
+`;
+
 const Copyright = styled.p`
-  text-align: right;
+  position: absolute;
+  right: 0;
+  bottom: ${({ theme }) => theme.spacing.sm};
+
   @media only screen and (max-width: 1199px) {
     display: none;
   }
@@ -107,7 +115,7 @@ const Layout = ({ children }) => (
     <ResponsiveWrapper>
       <NavHeader />
       <Main>{children}</Main>
-      <footer>
+      <Footer>
         <ExternalServices>
           <ExternalServiceFabLink
             title="Twitter"
@@ -142,7 +150,7 @@ const Layout = ({ children }) => (
           </ExternalServiceFabLink>
         </ExternalServices>
         <Copyright>© Aggelos Arvanitakis</Copyright>
-      </footer>
+      </Footer>
     </ResponsiveWrapper>
   </ThemeProvider>
 );
