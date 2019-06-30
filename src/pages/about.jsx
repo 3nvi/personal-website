@@ -50,7 +50,7 @@ const AboutPage = ({ data }) => (
           <Container contentDirection="row" contentJustification="space-between">
             <div>
               {renderAst(data.bio.childMarkdownRemark.htmlAst)}
-              <Link to="/publications/">
+              <Link to="/publications">
                 <Button tabIndex="-1">Still interested?!</Button>
               </Link>
             </div>
