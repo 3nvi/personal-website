@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import AutosizeableTextarea from 'react-textarea-autosize';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { Form as FormikForm, Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
@@ -20,6 +20,7 @@ const commonFormElementStyles = ({ theme }) => css`
   padding: 0.5rem 0;
   width: 100%;
   font-size: 1rem;
+  border-radius: 0;
   border-bottom: 1px solid ${theme.colors.lightgrey};
   outline: none;
   color: ${theme.colors.black};
@@ -27,6 +28,10 @@ const commonFormElementStyles = ({ theme }) => css`
   &:focus {
     border-bottom: 1px solid ${theme.colors.grey};
   }
+`;
+
+const Form = styled(FormikForm)`
+  padding: ${({ theme }) => `${theme.spacing.lg} 0`};
 `;
 
 const FormControl = styled.div`
