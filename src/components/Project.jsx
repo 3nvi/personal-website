@@ -81,6 +81,10 @@ const BannerWrapper = styled.button`
   width: 100%;
   max-height: 350px;
   margin: 0;
+
+  .gatsby-image-wrapper {
+    max-height: inherit;
+  }
 `;
 
 const ScreenshotListItem = styled(props => (
