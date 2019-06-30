@@ -63,14 +63,5 @@ module.exports = {
         respectDNT: false,
       },
     },
-    {
-      resolve: `gatsby-plugin-cookiehub`,
-      options: {
-        cookihubId: process.env.COOKIEHUB_ID,
-        trackingId: process.env.GA_TRACKING_ID,
-        head: false,
-        anonymize: true,
-      },
-    },
   ],
 };
