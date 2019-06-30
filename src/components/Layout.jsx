@@ -16,7 +16,8 @@ const ResponsiveWrapper = styled.div`
   margin: auto;
   padding: 20px;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   box-sizing: border-box;
 
   display: flex;
@@ -47,6 +48,8 @@ const ResponsiveWrapper = styled.div`
 `;
 
 const Main = styled.main`
+  display: flex;
+  flex-direction: column;
   @media only screen and (max-width: 767px) {
     margin: ${({ theme }) => `${theme.spacing.xl} 0 ${theme.spacing.lg} 0`};
   }

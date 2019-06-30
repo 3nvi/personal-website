@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 const Container = styled.div(({ contentDirection, contentJustification }) => ({
   height: '100%',
   display: 'flex',
+  flexGrow: 1,
   flexDirection: contentDirection,
   [contentDirection.includes('row') ? 'justifyContent' : 'alignItems']: contentJustification,
   [contentDirection.includes('row') ? 'alignItems' : 'justifyContent']: 'center',

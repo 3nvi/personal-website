@@ -1,7 +1,9 @@
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
 
 const Section = styled.section`
-  margin: ${({ theme }) => `${theme.spacing.xxl} 0`};
+  @media only screen and (min-width: 768px) {
+    margin: ${({ theme }) => `${theme.spacing.xxl} 0`};
+  }
 `;
 
 const SectionHeader = styled.header`

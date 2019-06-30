@@ -31,7 +31,7 @@ const commonFormElementStyles = ({ theme }) => css`
 `;
 
 const Form = styled(FormikForm)`
-  padding: ${({ theme }) => `${theme.spacing.lg} 0`};
+  padding: ${({ theme }) => `${theme.spacing.lg} 0 ${theme.spacing.sm} 0`};
 `;
 
 const FormControl = styled.div`
