@@ -136,7 +136,7 @@ const Layout = ({ children }) => (
           <ExternalServiceFabLink
             title="Linkedin"
             aria-label="Linkedin"
-            href={`https://NavGroupItemnkedin.com/in/${linkedinHandle}`}
+            href={`https://linkedin.com/in/${linkedinHandle}`}
           >
             <LinkedinSVG />
           </ExternalServiceFabLink>
