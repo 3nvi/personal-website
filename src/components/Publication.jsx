@@ -82,7 +82,7 @@ function Publication({
             publisher: {
               '@type': 'Organization',
               name: publisher,
-              logo: null,
+              logo: '/icons/icon-512x512.png',
             },
             author: {
               '@type': 'Person',
