@@ -47,6 +47,7 @@ const PublicationsPage = props => {
       description={publication.description}
       timeInMinutes={publication.timeInMinutes}
       href={publication.href}
+      publisher={publication.publisher}
       bannerImgData={publication.banner.childImageSharp.fluid}
     />
   );
@@ -115,6 +116,7 @@ export const query = graphql`
       href
       timeInMinutes
       title
+      publisher
     }
   }
 

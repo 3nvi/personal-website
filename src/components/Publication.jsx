@@ -52,7 +52,15 @@ const Anchor = styled.a`
   }
 `;
 
-function Publication({ href, title, createdAt, timeInMinutes, description, bannerImgData }) {
+function Publication({
+  href,
+  title,
+  createdAt,
+  timeInMinutes,
+  description,
+  bannerImgData,
+  publisher,
+}) {
   const creationDateToIso = createdAt.replace(/\//, '-');
   return (
     <ArticleWell>
@@ -65,10 +73,22 @@ function Publication({ href, title, createdAt, timeInMinutes, description, banne
             articleSection: 'Web development',
             headline: title,
             dateCreated: creationDateToIso,
+            dateModified: creationDateToIso,
             datePublished: creationDateToIso,
             url: href,
             timeRequired: `PT${timeInMinutes}M`,
             thumbnailUrl: bannerImgData.originalImg,
+            image: bannerImgData.originalImg,
+            publisher: {
+              '@type': 'Organization',
+              name: publisher,
+            },
+            creator: {
+              '@type': 'Person',
+              name: 'Aggelos Arvanitakis',
+              url: '/',
+              image: '/img/main.jpg',
+            },
           })}
         </script>
         ;
@@ -94,6 +114,7 @@ Publication.propTypes = {
   createdAt: PropTypes.string.isRequired,
   timeInMinutes: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired,
   bannerImgData: PropTypes.object.isRequired,
 };
 
