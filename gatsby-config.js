@@ -49,10 +49,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-143018507-1',
+        trackingId: process.env.GA_TRACKING_ID,
         head: true,
         anonymize: true,
         respectDNT: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-cookiehub`,
+      options: {
+        cookihubId: process.env.COOKIEHUB_ID,
+        trackingId: process.env.GA_TRACKING_ID,
+        head: false,
+        anonymize: true,
       },
     },
   ],
