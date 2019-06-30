@@ -37,15 +37,14 @@ module.exports = {
       options: {
         name: `Aggelos Arvanitakis | Personal Website`,
         short_name: `Aggelos Arvanitakis`,
+        description: `Personal website of Aggelos Arvanitakis showcasing related work`,
         start_url: `/`,
+        lang: `en-US`,
         background_color: `#887CFE`,
         theme_color: `#CC26E8`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `static/img/favicon.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };
