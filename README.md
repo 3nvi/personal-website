@@ -1,12 +1,13 @@
 # Personal website
 
+## Related
+
 This is my personal website implemented using gatsby, emotion & react.
-It contains all my articles and the work that I've done which I'm allowed
+It contains all my articles and the work that I've done that I'm allowed
 to publicly disclose.
 
 It is deployed on Netlify, with the messaging
-functionality implemented through Netlify serverless
-functions (a.k.a. AWS lambdas)
+functionality implemented through AWS lambdas. Features a lighthouse score of 100 on performance, SEO & Best practices.
 
 ## Running locally
 
