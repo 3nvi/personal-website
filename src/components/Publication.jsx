@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import dayjs from 'dayjs';
 import Img from 'gatsby-image';
+import Helmet from 'react-helmet';
 import Text from './Text';
 
 const ArticleWell = styled.article`
@@ -52,8 +53,26 @@ const Anchor = styled.a`
 `;
 
 function Publication({ href, title, createdAt, timeInMinutes, description, bannerImgData }) {
+  const creationDateToIso = createdAt.replace(/\//, '-');
   return (
     <ArticleWell>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'http://schema.org/',
+            '@type': 'Article',
+            articleBody: description,
+            articleSection: 'Web development',
+            headline: title,
+            dateCreated: creationDateToIso,
+            datePublished: creationDateToIso,
+            url: href,
+            timeRequired: `PT${timeInMinutes}M`,
+            thumbnailUrl: bannerImgData.originalImg,
+          })}
+        </script>
+        ;
+      </Helmet>
       <header>
         <Anchor href={href} rel="noopener noreferrer" target="_blank">
           <ArticleBanner alt="Article Banner" fluid={bannerImgData} />

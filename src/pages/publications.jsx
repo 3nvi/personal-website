@@ -106,6 +106,7 @@ export const query = graphql`
         childImageSharp {
           fluid(quality: 75, maxWidth: 550, toFormat: JPG) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
+            originalImg
           }
         }
       }
