@@ -1,4 +1,3 @@
-const querystring = require('querystring');
 const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback) {
@@ -17,7 +16,7 @@ exports.handler = function(event, context, callback) {
     },
   });
 
-  const { email, subject, body } = querystring.parse(event.body);
+  const { email, subject, body } = JSON.parse(event.body);
   transporter.sendMail(
     {
       from: process.env.CONTACT_EMAIL,
