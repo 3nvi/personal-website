@@ -7,7 +7,7 @@ exports.handler = function(event, context, callback) {
 
   // create a transporter
   const transporter = nodemailer.createTransport({
-    host: process.env.STMP_HOST,
+    host: process.env.SMTP_HOST,
     port: 465,
     secure: true,
     auth: {
