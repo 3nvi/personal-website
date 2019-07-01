@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import AutosizeableTextarea from 'react-textarea-autosize';
@@ -89,10 +90,15 @@ const validationSchema = yup.object().shape({
 const ContactPage = () => {
   const [isMessageSent, setMessageSent] = React.useState(false);
 
-  const sendMessage = values => {
-    alert(values);
-
-    setMessageSent(true);
+  const sendMessage = async (values, { setSubmitting }) => {
+    try {
+      await axios.post('/.netlify/functions/contact', values);
+      setSubmitting(false);
+      setMessageSent(true);
+    } catch (err) {
+      alert(err);
+      setSubmitting(false);
+    }
   };
 
   return (
