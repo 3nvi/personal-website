@@ -9,6 +9,7 @@ import Button from './Button';
 import 'react-image-lightbox/style.css';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
+import { disablePageScrolling } from '../utils/helpers';
 
 const clickableImgStyle = css`
   border-radius: 4px;
@@ -143,6 +144,7 @@ function Project({
   const showLightboxFromIndex = index => {
     setLightboxImgIndex(index);
     setLightboxVisibility(true);
+    disablePageScrolling(true);
   };
 
   const imageSrcList = [
@@ -217,7 +219,10 @@ function Project({
           mainSrc={imageSrcList[lightboxImgIndex]}
           nextSrc={imageSrcList[(lightboxImgIndex + 1) % imageSrcList.length]}
           prevSrc={imageSrcList[(lightboxImgIndex + imageSrcList.length - 1) % imageSrcList.length]}
-          onCloseRequest={() => setLightboxVisibility(false)}
+          onCloseRequest={() => {
+            setLightboxVisibility(false);
+            disablePageScrolling(false);
+          }}
           onMoveNextRequest={() =>
             setLightboxImgIndex((lightboxImgIndex + 1) % imageSrcList.length)
           }

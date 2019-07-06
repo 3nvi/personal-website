@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
+import { disablePageScrolling } from '../utils/helpers';
 
 const FlexWrapper = styled.header`
   display: flex;
@@ -184,7 +185,10 @@ const NavHeader = () => {
       <MobileNavGroupJewel
         aria-label="Toggle menu"
         isOpen={isMobileMenuVisible}
-        onClick={() => setMobileMenuVisibility(!isMobileMenuVisible)}
+        onClick={() => {
+          setMobileMenuVisibility(!isMobileMenuVisible);
+          disablePageScrolling(!isMobileMenuVisible);
+        }}
       />
     </FlexWrapper>
   );
