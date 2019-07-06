@@ -13,7 +13,7 @@ const Summary = styled.div`
   flex-grow: 1;
 
   @media only screen and (max-width: 767px) {
-    transform: ${({ theme }) => `translate3d(0, ${theme.spacing.xxl}, 0)`};
+    transform: ${({ theme }) => `translate3d(0, ${theme.spacing.xl}, 0)`};
   }
 
   @media only screen and (min-width: 1200px) and (max-width: 1599px) {
@@ -33,7 +33,7 @@ const HeroImgResponsiveWrapper = styled.div`
     position: absolute;
     width: 300px;
     height: 300px;
-    top: -7%;
+    top: -9%;
     left: -20%;
   }
 
