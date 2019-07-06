@@ -6,6 +6,8 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '../utils/theme';
 import NavHeader from './NavHeader';
 import { twitterHandle, githubHandle, linkedinHandle, mediumHandle } from '../utils/constants';
+import FuturaBookFont from '../assets/fonts/Futura-Book.woff';
+import FuturaBoldFont from '../assets/fonts/Futura-Bold.woff';
 import TwitterSVG from '../assets/icons/twitter.svg';
 import MediumSVG from '../assets/icons/medium.svg';
 import GithubSVG from '../assets/icons/github.svg';
@@ -17,7 +19,7 @@ const globalStyles = css`
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../assets/fonts/Futura-Book.woff') format('woff');
+    src: url(${FuturaBookFont}) format('woff');
   }
 
   @font-face {
@@ -25,7 +27,7 @@ const globalStyles = css`
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../assets/fonts/Futura-Bold.woff') format('woff');
+    src: url(${FuturaBoldFont}) format('woff');
   }
 
   @font-face {
