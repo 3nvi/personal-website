@@ -74,7 +74,7 @@ const IndexPage = props => (
           #react #apollo #redux #webperf
         </Text>
         <Link to="/about">
-          <Button tabIndex="-1">Not a bee? Click here</Button>
+          <Button tabIndex="-1">Not a bee? Continue</Button>
         </Link>
       </Summary>
       <HeroImgResponsiveWrapper>

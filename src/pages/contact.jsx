@@ -110,9 +110,9 @@ const ContactPage = () => {
           <Column centered tablet={12} computer={8} largeMonitor={6}>
             <Heading size="small">Get in touch</Heading>
             <Text>
-              If you still wanna get in touch with me after seeing my face in the landing page, then
-              please fill this form and I'll get back to you within a few hours. Alternatively, you
-              can email me directly at{' '}
+              If you want to get in touch with me after all you've seen, then please fill this form
+              and I'll get back to you within a few hours. Alternatively, feel free to email me
+              directly at{' '}
               <a href="mailto:contact@aggelosarvanitakis.me">contact@aggelosarvanitakis.me</a>.
             </Text>
             {isMessageSent ? (
@@ -124,7 +124,7 @@ const ContactPage = () => {
                 validationSchema={validationSchema}
               >
                 {({ isSubmitting, isValid }) => (
-                  <Form novalidate>
+                  <Form noValidate>
                     <FormControl>
                       <Label htmlFor="email">Your email address</Label>
                       <Field component={Input} type="email" name="email" id="email" />
