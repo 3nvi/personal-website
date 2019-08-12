@@ -1,6 +1,6 @@
 ---
 title: Developers should aim for UX rather than performance
-banner: './banner.png'
+banner: './banner.jpg'
 createdAt: 2019/08/12
 timeInMinutes: 5
 publisher: Medium
