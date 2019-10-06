@@ -9,6 +9,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "same-origin"
 
+[[headers]]
   for = "/*.js"
   [headers.values]
 	cache-control = '''
@@ -16,6 +17,7 @@
 	max-age=31536000,
 	immutable'''
 
+[[headers]]
   for = "/*.css"
   [headers.values]
 	cache-control = '''
@@ -23,6 +25,7 @@
 	max-age=31536000,
 	immutable'''
 
+[[headers]]
   for = "/fonts/*"
   [headers.values]
 	cache-control = '''
@@ -30,6 +33,7 @@
 	max-age=31536000,
 	immutable'''
 
+[[headers]]
   for = "/static/*"
   [headers.values]
 	cache-control = '''
@@ -37,6 +41,7 @@
 	max-age=31536000,
 	immutable'''
 
+[[headers]]
   for = "/img/*"
   [headers.values]
 	cache-control = '''
