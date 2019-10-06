@@ -57,16 +57,5 @@ module.exports = {
         respectDNT: false,
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          '/:asset.css': ['cache-control: public, max-age=31536000'],
-          '/:asset.js': ['cache-control: public, max-age=31536000'],
-          '/fonts/*': ['cache-control: public, max-age=31536000'],
-          '/img/*': ['cache-control: public, max-age=86400, stale-while-revalidate=86400'],
-        },
-      },
-    },
   ],
 };
