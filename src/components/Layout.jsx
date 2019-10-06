@@ -6,8 +6,6 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '../utils/theme';
 import NavHeader from './NavHeader';
 import { twitterHandle, githubHandle, linkedinHandle, mediumHandle } from '../utils/constants';
-import FuturaBookFont from '../assets/fonts/Futura-Book.woff';
-import FuturaBoldFont from '../assets/fonts/Futura-Bold.woff';
 import TwitterSVG from '../assets/icons/twitter.svg';
 import MediumSVG from '../assets/icons/medium.svg';
 import GithubSVG from '../assets/icons/github.svg';
@@ -19,7 +17,7 @@ const globalStyles = css`
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(${FuturaBookFont}) format('woff');
+    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Book.woff') format('woff');
   }
 
   @font-face {
@@ -27,19 +25,7 @@ const globalStyles = css`
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(${FuturaBoldFont}) format('woff');
-  }
-
-  @font-face {
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'),
-      url(https://fonts.gstatic.com/s/playfairdisplay/v14/nuFlD-vYSZviVYUb_rj3ij__anPXBYf9lW4e5j5hNKc.woff2)
-        format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-      U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Bold.woff') format('woff');
   }
 
   html {
