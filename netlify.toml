@@ -4,10 +4,10 @@
 [[headers]]
   for = "/*.js"
   [headers.values]
-    X-Frame-Options: DENY
-    X-XSS-Protection: 1; mode=block
-    X-Content-Type-Options: nosniff
-    Referrer-Policy: same-origin
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "same-origin"
 
   for = "/*.js"
   [headers.values]
