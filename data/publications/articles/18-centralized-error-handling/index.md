@@ -1,5 +1,5 @@
 title: Centralizing API error handling in React apps
-banner: './banner.jpg'
+banner: './banner.jpeg'
 createdAt: 2019/11/19
 timeInMinutes: 10
 publisher: fullstack.io
