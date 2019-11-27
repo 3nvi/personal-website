@@ -17,7 +17,7 @@ const globalStyles = css`
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Book.woff') format('woff');
+    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Book.woff2') format('woff2');
   }
 
   @font-face {
@@ -25,7 +25,7 @@ const globalStyles = css`
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Bold.woff') format('woff');
+    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Bold.woff2') format('woff2');
   }
 
   html {
