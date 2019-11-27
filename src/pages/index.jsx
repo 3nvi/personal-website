@@ -60,7 +60,7 @@ const HeroImgResponsiveWrapper = styled.div`
 
 const IndexPage = props => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Front-end Developer" />
     <Container contentDirection="row" contentJustification="center">
       <Summary>
         <Heading>
