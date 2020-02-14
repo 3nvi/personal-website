@@ -141,6 +141,10 @@ const HomeLink = styled(PageLink)`
 const NavHeader = () => {
   const [isMobileMenuVisible, setMobileMenuVisibility] = React.useState(false);
 
+  React.useEffect(() => {
+    disablePageScrolling(isMobileMenuVisible);
+  }, [isMobileMenuVisible]);
+
   const { logo } = useStaticQuery(
     graphql`
       query {
@@ -185,10 +189,7 @@ const NavHeader = () => {
       <MobileNavGroupJewel
         aria-label="Toggle menu"
         isOpen={isMobileMenuVisible}
-        onClick={() => {
-          setMobileMenuVisibility(!isMobileMenuVisible);
-          disablePageScrolling(!isMobileMenuVisible);
-        }}
+        onClick={() => setMobileMenuVisibility(!isMobileMenuVisible)}
       />
     </FlexWrapper>
   );
