@@ -21,6 +21,7 @@ const commonFormElementStyles = ({ theme }) => css`
   padding: 0.5rem 0;
   width: 100%;
   font-size: 1rem;
+  font-family: inherit;
   border-radius: 0;
   border-bottom: 1px solid ${theme.colors.lightgrey};
   outline: none;
