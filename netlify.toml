@@ -48,3 +48,9 @@
 	public,
 	max-age=86400,
 	stale-while-revalidate=86400'''
+
+[[redirects]]
+  from = "https://aggelosarvanitakis.me/*"
+  to = "https://aggelos.dev/:splat"
+  status = 301
+  force = true
