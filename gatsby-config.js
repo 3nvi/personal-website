@@ -5,6 +5,7 @@ module.exports = {
       'Front end engineer aiming to continuously expand his knowledge by collaborating, learning & teaching. I know & teach React, Svelte, Redux, Apollo, Webperf',
     image: `/img/main.jpg`,
     logo: `/img/favicon.png`,
+    siteUrl: `https://aggelos.dev`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -55,6 +56,46 @@ module.exports = {
         head: true,
         anonymize: true,
         respectDNT: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            serialize: ({ query: { allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return {
+                  title: edge.node.frontmatter.title,
+                  description: edge.node.frontmatter.description,
+                  date: edge.node.frontmatter.createdAt,
+                  url: edge.node.frontmatter.href,
+                  guid: edge.node.frontmatter.href,
+                  custom_elements: [{ readingTime: edge.node.frontmatter.timeInMinutes }],
+                };
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___createdAt]}, filter: {fileAbsolutePath: {, regex: "data/publications/"}}) {
+                  edges {
+                    node {
+                      frontmatter {
+                        title
+                        description
+                        href
+                        timeInMinutes
+                        createdAt
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Aggelos Arvanitakis RSS Feed',
+          },
+        ],
       },
     },
   ],
