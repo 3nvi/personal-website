@@ -7,6 +7,7 @@ screenshots:
 startedAt: 2019
 description: Panther detects threats with log data and improves your AWS cloud security posture.
 href: https://github.com/panther-labs/panther
+githubUrl: https://github.com/panther-labs/panther
 tags:
   - React
   - Typescript
