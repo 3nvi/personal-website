@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/Layout';
@@ -8,32 +6,16 @@ import Heading from '../components/Heading';
 import SEO from '../components/SEO';
 import Container from '../components/Container';
 
-const mobileAndTabletHeadingStyle = css`
-  @media only screen and (max-width: 1199px) {
-    border-bottom: 0.5rem solid;
-    border-top: 0.5rem solid;
-    padding: 2rem 0;
-  }
-`;
-
-const ResponsiveImgWrapper = styled.div`
-  flex-shrink: 0;
-
-  @media only screen and (max-width: 1199px) {
-    display: none;
-  }
-`;
-
 const Page404 = props => (
   <Layout>
     <SEO title="Not Found" />
     <Container contentDirection="row" contentJustification="space-evenly">
-      <Heading css={mobileAndTabletHeadingStyle}>
+      <Heading className="max-lg:border-b-8 max-lg:border-t-8 max-lg:py-8">
         404 <br /> Not found
       </Heading>
-      <ResponsiveImgWrapper>
-        <Img fixed={props.data.heroImage.childImageSharp.fixed} alt="Duotone close-up Portrait" />
-      </ResponsiveImgWrapper>
+      <div className="flex-shrink-0 max-lg:hidden">
+        <Img fixed={props.data.heroImage.childImageSharp.fixed} alt="Not Found" />
+      </div>
     </Container>
   </Layout>
 );
