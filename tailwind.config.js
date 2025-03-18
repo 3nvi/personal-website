@@ -2,10 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './data/**/*.{js,jsx,ts,tsx,md}'],
   theme: {
+    fontFamily: {
+      sans: ['FuturaNew', 'sans-serif'],
+      playfair: ['Playfair Display', 'FuturaNew', 'sans-serif'],
+    },
     extend: {
-      fontFamily: {
-        playfair: ['Playfair Display', 'FuturaNew', 'sans-serif'],
-      },
       colors: {
         primary: '#6a61c7',
         accent: '#CC26E8',
