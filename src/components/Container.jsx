@@ -1,27 +1,32 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 
-const Container = styled.div(({ contentDirection, contentJustification }) => ({
-  height: '100%',
-  display: 'flex',
-  flexGrow: 1,
-  flexDirection: contentDirection,
-  [contentDirection.includes('row') ? 'justifyContent' : 'alignItems']: contentJustification,
-  [contentDirection.includes('row') ? 'alignItems' : 'justifyContent']: 'center',
-}));
+const Container = ({ children, contentDirection = 'row', contentJustification = 'center' }) => (
+  <div
+    className={`
+      flex
+      ${contentDirection === 'column' ? 'flex-col' : 'flex-row'}
+      ${
+        contentJustification === 'flex-start'
+          ? 'justify-start'
+          : contentJustification === 'center'
+          ? 'justify-center'
+          : contentJustification === 'space-between'
+          ? 'justify-between'
+          : contentJustification === 'space-evenly'
+          ? 'justify-evenly'
+          : 'justify-start'
+      }
+    `}
+  >
+    {children}
+  </div>
+);
 
 Container.propTypes = {
-  contentDirection: PropTypes.oneOf(['row', 'row-reverse', 'column', 'column-reverse']),
-  contentJustification: PropTypes.oneOf([
-    'space-between',
-    'center',
-    'space-around',
-    'space-evenly',
-  ]),
+  children: PropTypes.node.isRequired,
+  contentDirection: PropTypes.oneOf(['column', 'row']),
+  contentJustification: PropTypes.oneOf(['flex-start', 'center', 'space-between', 'space-evenly']),
 };
 
-Container.defaultProps = {
-  contentDirection: 'row',
-  contentJustification: 'center',
-};
 export default Container;

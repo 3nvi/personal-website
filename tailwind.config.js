@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './data/**/*.{js,jsx,ts,tsx,md}'],
   theme: {
     extend: {
+      fontFamily: {
+        playfair: ['Playfair Display', 'FuturaNew', 'sans-serif'],
+      },
       colors: {
         primary: '#6a61c7',
         accent: '#CC26E8',
@@ -11,14 +14,6 @@ module.exports = {
         grey: '#8B8B8B',
         lightgrey: '#eee',
         danger: '#c80000',
-      },
-      spacing: {
-        xs: '0.5rem',
-        sm: '1rem',
-        md: '2rem',
-        lg: '3rem',
-        xl: '4rem',
-        xxl: '5rem',
       },
       gridTemplateColumns: {
         '16': 'repeat(16, minmax(0, 1fr))',

@@ -1,16 +1,21 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Section = styled.section`
-  @media only screen and (min-width: 768px) {
-    margin: ${({ theme }) => `${theme.spacing.xxl} 0`};
-  }
-`;
+const SectionHeader = ({ children }) => (
+  <header className="py-8 border-b border-lightgrey">{children}</header>
+);
 
-const SectionHeader = styled.header`
-  padding: ${({ theme }) => `${theme.spacing.md} 0`};
-  border-bottom: ${({ theme }) => `1px solid ${theme.colors.lightgrey}`};
-`;
+const Section = ({ children }) => <section className="md:my-20">{children}</section>;
 
 Section.Header = SectionHeader;
+
+Section.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+SectionHeader.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
 
 export default Section;

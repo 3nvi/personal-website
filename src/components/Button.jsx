@@ -1,40 +1,44 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 
-const Button = styled.button`
-  transition: all 0.15s ease-in-out;
-  font-size: 0.9rem;
-  border: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 0.15rem;
-  padding: ${props => `${props.theme.spacing.sm} ${props.theme.spacing.lg}`};
-  border-radius: 25px;
-  background-image: ${props =>
-    `linear-gradient(-45deg, ${props.theme.colors.primary}, ${props.theme.colors.accent})`};
-  color: ${props => props.theme.colors.white};
-  width: ${props => (props.fullWidth ? '100%' : 'unset')};
-
-  &:hover {
-    transform: scale(1.065, 1.065);
-  }
-
-  &[disabled] {
-    opacity: 0.3;
-    pointer-events: none;
-  }
-
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-  }
-`;
+const Button = React.forwardRef(({ children, fullWidth, disabled, className, ...props }, ref) => (
+  <button
+    ref={ref}
+    disabled={disabled}
+    className={`
+      transition-all duration-150 ease-in-out
+      text-sm
+      border-none
+      uppercase
+      font-bold
+      tracking-[0.15rem]
+      px-8 py-4
+      rounded-3xl
+      bg-gradient-to-l from-primary to-accent
+      text-white
+      w-full md:w-auto
+      ${fullWidth ? 'md:w-full' : ''}
+      hover:scale-[1.065]
+      disabled:opacity-30 disabled:pointer-events-none
+      ${className || ''}
+    `}
+    {...props}
+  >
+    {children}
+  </button>
+));
 
 Button.propTypes = {
   fullWidth: PropTypes.bool,
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 Button.defaultProps = {
   fullWidth: false,
+  disabled: false,
+  className: '',
 };
 
 export default Button;

@@ -1,9 +1,10 @@
-import styled from '@emotion/styled';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Grid = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-`;
+const Grid = ({ children }) => <div className="grid grid-cols-16 w-full">{children}</div>;
+
+Grid.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Grid;
