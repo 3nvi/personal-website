@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
@@ -9,12 +8,6 @@ import SEO from '../components/SEO';
 import Grid from '../components/Grid';
 import Column from '../components/Column';
 import Section from '../components/Section';
-
-const ProjectListItem = styled.li`
-  &:not(:last-of-type) {
-    border-bottom: 1px solid #f1f1f1;
-  }
-`;
 
 const ProjectsPage = props => {
   const renderProject = project => (
@@ -49,7 +42,12 @@ const ProjectsPage = props => {
             </Text>
             <ul id="commercial-projects">
               {props.data.commercialProjects.edges.map(({ node: { frontmatter: project } }) => (
-                <ProjectListItem key={project.title}>{renderProject(project)}</ProjectListItem>
+                <li
+                  key={project.title}
+                  className="[&:not(:last-of-type)]:border-b border-lightgrey"
+                >
+                  {renderProject(project)}
+                </li>
               ))}
             </ul>
           </Section>
@@ -63,7 +61,12 @@ const ProjectsPage = props => {
             </Text>
             <ul id="fun-projects">
               {props.data.funProjects.edges.map(({ node: { frontmatter: project } }) => (
-                <ProjectListItem key={project.title}>{renderProject(project)}</ProjectListItem>
+                <li
+                  key={project.title}
+                  className="[&:not(:last-of-type)]:border-b border-lightgrey"
+                >
+                  {renderProject(project)}
+                </li>
               ))}
             </ul>
           </Section>
