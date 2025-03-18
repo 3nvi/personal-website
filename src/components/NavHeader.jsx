@@ -1,142 +1,7 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from '@emotion/styled';
 import { disablePageScrolling } from '../utils/helpers';
-
-const FlexWrapper = styled.header`
-  display: flex;
-  align-items: center;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-`;
-
-const NavGroup = styled.ul`
-  @media only screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-  }
-
-  @media only screen and (max-width: 767px) {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: ${props => (props.isMobileMenuVisible ? 'flex' : 'none')};
-    background-color: rgba(255, 255, 255, 0.975);
-    z-index: 1;
-  }
-`;
-
-const NavGroupItem = styled.li`
-  display: flex;
-  align-items: center;
-
-  a {
-    position: relative;
-    letter-spacing: 0.2rem;
-    text-decoration: none;
-    padding: ${({ theme }) => theme.spacing.sm};
-    color: ${({ theme }) => theme.colors.black};
-  }
-
-  @media only screen and (max-width: 767px) {
-    margin-bottom: ${({ theme }) => theme.spacing.sm};
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    margin-right: ${({ theme }) => theme.spacing.sm};
-  }
-
-  @media only screen and (min-width: 1200px) {
-    margin-right: ${({ theme }) => theme.spacing.md};
-  }
-`;
-
-const MobileNavGroupJewel = styled.button`
-  position: absolute;
-  top: ${({ theme }) => theme.spacing.sm};
-  right: ${({ theme }) => theme.spacing.sm};
-  z-index: 1009;
-  padding: 15px;
-  background: none;
-  border: none;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
-
-  &::before,
-  &::after {
-    transition: all 0.2s linear;
-    content: '';
-    display: block;
-    width: 30px;
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-
-  &::before {
-    margin-bottom: ${props => (!props.isOpen ? '15px' : 0)};
-    transform: ${props => (props.isOpen ? 'translateY(3px) rotate(45deg)' : undefined)};
-  }
-
-  &::after {
-    transform: ${props => (props.isOpen ? 'translateY(3px) rotate(-45deg)' : undefined)};
-  }
-`;
-
-const PageLink = styled(props => <Link {...props} activeClassName="active" />)`
-  &.active {
-    font-weight: bold;
-  }
-
-  &::after {
-    position: absolute;
-    width: ${({ theme }) => `calc(100% - 2 * ${theme.spacing.sm})`};
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  &.active::after {
-    content: '';
-    height: 5px;
-    border-radius: 25px;
-    background-image: ${({ theme }) =>
-      `linear-gradient(-45deg, ${theme.colors.primary}, ${theme.colors.accent})`};
-  }
-
-  &:not(.active):hover::after {
-    content: '';
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-`;
-
-const HomeLink = styled(PageLink)`
-  font-size: 1.25rem;
-  font-weight: bold;
-
-  &.active::after {
-    display: none;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    display: none;
-  }
-`;
 
 const NavHeader = () => {
   const [isMobileMenuVisible, setMobileMenuVisibility] = React.useState(false);
@@ -159,39 +24,91 @@ const NavHeader = () => {
     `
   );
 
+  const PageLink = ({ to, children, className = '' }) => (
+    <Link
+      to={to}
+      activeClassName="active"
+      className={`
+        relative tracking-[0.2rem] no-underline px-3 py-2 text-black
+        after:absolute after:w-[calc(100%-1.5rem)] after:left-0 after:right-0 after:bottom-0 after:mx-auto
+        [&.active]:font-bold
+        [&.active]:after:content-[''] [&.active]:after:h-[5px] [&.active]:after:rounded-[25px]
+        [&.active]:after:bg-gradient-to-l [&.active]:after:from-primary [&.active]:after:to-accent
+        hover:[&:not(.active)]:after:content-[''] hover:[&:not(.active)]:after:h-px hover:[&:not(.active)]:after:bg-black
+        ${className}
+      `}
+    >
+      {children}
+    </Link>
+  );
+
+  const HomeLink = ({ children, ...props }) => (
+    <PageLink
+      {...props}
+      className="
+        text-xl font-bold
+        md:max-lg:hidden
+        [&.active]:after:hidden
+      "
+    >
+      {children}
+    </PageLink>
+  );
+
   return (
-    <FlexWrapper>
-      <Nav>
-        <NavGroup>
-          <NavGroupItem>
+    <header className="flex items-center">
+      <nav className="flex justify-between flex-grow">
+        <ul className="md:flex md:items-center">
+          <li className="flex items-center">
             <Img fixed={logo.childImageSharp.fixed} alt="logo" />
             <HomeLink to="/">Aggelos.</HomeLink>
-          </NavGroupItem>
-        </NavGroup>
-        <NavGroup isMobileMenuVisible={isMobileMenuVisible}>
-          <NavGroupItem>
+          </li>
+        </ul>
+        <ul
+          className={`
+          md:flex md:items-center
+          max-md:fixed max-md:w-screen max-md:h-screen max-md:top-0 max-md:left-0
+          max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center
+          ${isMobileMenuVisible ? 'max-md:flex' : 'max-md:hidden'}
+          max-md:bg-white/[0.975] max-md:z-10
+        `}
+        >
+          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/">Home</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/about">About</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/publications">Publications</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/projects">Projects</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/contact">Contact</PageLink>
-          </NavGroupItem>
-        </NavGroup>
-      </Nav>
-      <MobileNavGroupJewel
+          </li>
+        </ul>
+      </nav>
+      <button
         aria-label="Toggle menu"
-        isOpen={isMobileMenuVisible}
+        className={`
+          md:hidden
+          fixed top-3 right-3
+          z-[1009]
+          p-4
+          bg-transparent
+          border-none
+          before:content-[''] before:block before:w-[30px] before:h-px before:bg-black
+          before:transition-all before:duration-200 before:ease-linear
+          ${isMobileMenuVisible ? 'before:translate-y-[3px] before:rotate-45' : 'before:mb-[15px]'}
+          after:content-[''] after:block after:w-[30px] after:h-px after:bg-black
+          after:transition-all after:duration-200 after:ease-linear
+          ${isMobileMenuVisible ? 'after:translate-y-[3px] after:-rotate-45' : ''}
+        `}
         onClick={() => setMobileMenuVisibility(!isMobileMenuVisible)}
       />
-    </FlexWrapper>
+    </header>
   );
 };
 
