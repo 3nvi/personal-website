@@ -7,10 +7,8 @@ const Button = ({ children, fullWidth, disabled, ...props }) => (
     disabled={disabled}
     className={clsx(
       'font-[system-ui] leading-none transition-all duration-150 ease-in-out text-sm uppercase font-bold tracking-[0.15rem] px-12 py-4 rounded-3xl bg-gradient-to-l from-primary to-accent text-white w-full md:w-auto hover:scale-[1.065] cursor-pointer',
-      {
-        'md:w-full': fullWidth,
-        'disabled:opacity-30 disabled:pointer-events-none': disabled,
-      }
+      fullWidth && 'md:w-full',
+      disabled && 'disabled:opacity-30 disabled:pointer-events-none'
     )}
     {...props}
   >

@@ -4,10 +4,11 @@ import clsx from 'clsx';
 
 const Text = ({ children, limited = false, spaced = false, ...props }) => (
   <p
-    className={clsx('leading-[1.7rem] my-8 text-grey', {
-      'max-w-[500px]': limited,
-      'tracking-widest md:tracking-[0.15rem]': spaced,
-    })}
+    className={clsx(
+      'leading-[1.7rem] my-8 text-grey',
+      limited && 'max-w-[500px]',
+      spaced && 'tracking-widest md:tracking-[0.15rem]'
+    )}
     {...props}
   >
     {children}
