@@ -62,14 +62,14 @@ const NavHeader = () => {
           </li>
         </ul>
         <ul
-          className={`
-          md:flex md:items-center
-          max-md:fixed max-md:w-screen max-md:h-screen max-md:top-0 max-md:left-0
-          max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center
-          ${isMobileMenuVisible ? 'max-md:flex' : 'max-md:hidden'}
-          max-md:bg-white/[0.975] max-md:z-10
-          max-md:gap-y-4 md:max-lg:gap-x-4 lg:gap-x-8
-        `}
+          className={clsx(
+            'md:flex md:items-center',
+            'max-md:fixed max-md:w-screen max-md:h-screen max-md:top-0 max-md:left-0',
+            'max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center',
+            isMobileMenuVisible ? 'max-md:flex' : 'max-md:hidden',
+            'max-md:bg-white/[0.975] max-md:z-10',
+            'max-md:gap-y-4 md:max-lg:gap-x-4 lg:gap-x-8'
+          )}
         >
           <li className="flex">
             <PageLink to="/">Home</PageLink>
