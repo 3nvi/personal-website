@@ -25,14 +25,14 @@ const ProjectHeading = ({ children, ...props }) => (
 );
 
 const BannerWrapper = ({ children, ...props }) => (
-  <button className={`${clickableImgStyle} w-full max-h-[350px] m-0`} {...props}>
+  <button className={clsx(clickableImgStyle, 'w-full max-h-[350px] m-0')} {...props}>
     <div className="max-h-inherit">{children}</div>
   </button>
 );
 
 const ScreenshotListItem = ({ children, ...props }) => (
   <li>
-    <button className={`${clickableImgStyle} m-2`} {...props}>
+    <button className={clsx(clickableImgStyle, 'm-2')} {...props}>
       {children}
     </button>
   </li>
@@ -127,16 +127,13 @@ function Project({
           )}
         </header>
         <Text>{description}</Text>
-        <div className="flex flex-col items-center">
+        {githubUrl && (
           <div className="mb-12 md:w-auto w-full">
-            {githubUrl && (
-              <a href={githubUrl} rel="noopener noreferrer" target="_blank">
-                <Button>View on Github</Button>
-              </a>
-            )}
+            <a href={githubUrl} rel="noopener noreferrer" target="_blank">
+              <Button>View on Github</Button>
+            </a>
           </div>
-          <Button>View Project</Button>
-        </div>
+        )}
       </div>
       <div className="lg:pr-3 lg:w-1/2">
         <BannerWrapper onClick={() => showLightboxFromIndex(0)}>
