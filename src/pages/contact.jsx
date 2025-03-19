@@ -8,9 +8,6 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
-import Grid from '../components/Grid';
-import Column from '../components/Column';
-import Container from '../components/Container';
 
 const FormError = ({ children }) => <p className="text-xs mt-1 text-red-600">{children}</p>;
 
