@@ -5,7 +5,6 @@ import Heading from '../components/Heading';
 import Project from '../components/Project';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
-import Section from '../components/Section';
 
 const ProjectsPage = props => {
   const renderProject = project => (
@@ -26,10 +25,10 @@ const ProjectsPage = props => {
         title="Projects"
         description="Browse Aggelos Arvanitakis' freelancing, open source & fun projects"
       />
-      <Section>
-        <Section.Header>
+      <section className="md:my-20">
+        <header className="py-8 border-b border-lightgrey">
           <Heading size="small">Commercial Projects</Heading>
-        </Section.Header>
+        </header>
         <Text>
           This is a list of projects that I have professionally worked on. The technologies shown in
           the tags, are not only the ones that this particular project employs, but the ones that I
@@ -43,11 +42,11 @@ const ProjectsPage = props => {
             </li>
           ))}
         </ul>
-      </Section>
-      <Section>
-        <Section.Header>
+      </section>
+      <section className="md:my-20">
+        <header className="py-8 border-b border-lightgrey">
           <Heading size="small">Open Source & Fun Projects</Heading>
-        </Section.Header>
+        </header>
         <Text>
           This is a list of projects that I have either open-sourced or developed for fun. At least
           they were all "fun" in the beginning...
@@ -59,7 +58,7 @@ const ProjectsPage = props => {
             </li>
           ))}
         </ul>
-      </Section>
+      </section>
     </Layout>
   );
 };

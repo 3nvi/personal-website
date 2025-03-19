@@ -6,7 +6,6 @@ import Heading from '../components/Heading';
 import Publication from '../components/Publication';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
-import Section from '../components/Section';
 
 const PublicationsPage = props => {
   const ARTICLES_SECTION_ID = 'articles';
@@ -50,10 +49,10 @@ const PublicationsPage = props => {
         title="Publications"
         description="Browse Aggelos Arvanitakis' articles, podcasts & publications"
       />
-      <Section>
-        <Section.Header>
+      <section className="md:my-20">
+        <header className="py-8 border-b border-lightgrey">
           <Heading size="small">Articles</Heading>
-        </Section.Header>
+        </header>
         <Text>
           This is a list of the articles that I've posted over the years. Since early 2019, I have
           been trying to post a new article every 10 days, but as you know, sometimes other things
@@ -66,11 +65,11 @@ const PublicationsPage = props => {
             <li key={article.title}>{renderPublication(article)}</li>
           ))}
         </ul>
-      </Section>
-      <Section>
-        <Section.Header>
+      </section>
+      <section className="md:my-20">
+        <header className="py-8 border-b border-lightgrey">
           <Heading size="small">Podcasts</Heading>
-        </Section.Header>
+        </header>
         <Text>
           This is a list of the podcasts that I've recently started working on. I know it's not a
           list if it's only one, but more is coming. The main topics I tend to discuss about are
@@ -81,7 +80,7 @@ const PublicationsPage = props => {
             <li key={podcast.title}>{renderPublication(podcast)}</li>
           ))}
         </ul>
-      </Section>
+      </section>
     </Layout>
   );
 };
