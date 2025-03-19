@@ -9,14 +9,14 @@ import Container from '../components/Container';
 const Page404 = props => (
   <Layout>
     <SEO title="Not Found" />
-    <Container contentDirection="row" contentJustification="space-evenly">
+    <div className="flex flex-grow items-center justify-evenly">
       <Heading className="max-lg:border-b-8 max-lg:border-t-8 max-lg:py-8">
         404 <br /> Not found
       </Heading>
       <div className="flex-shrink-0 max-lg:hidden">
         <Img fixed={props.data.heroImage.childImageSharp.fixed} alt="Not Found" />
       </div>
-    </Container>
+    </div>
   </Layout>
 );
 
