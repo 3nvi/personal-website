@@ -6,7 +6,6 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
-import Container from '../components/Container';
 
 const IndexPage = props => (
   <Layout>
