@@ -56,7 +56,7 @@ const NavHeader = () => {
   );
 
   return (
-    <header className="flex items-center">
+    <header className="sticky bg-white top-0 z-10 py-3 flex items-center max-md:mb-16">
       <nav className="flex justify-between flex-grow">
         <ul className="md:flex md:items-center">
           <li className="flex items-center max-md:hidden">
@@ -95,7 +95,8 @@ const NavHeader = () => {
         aria-label="Toggle menu"
         className={`
           md:hidden
-          fixed top-3 right-3
+          absolute
+          right-3 top-3
           z-[1009]
           p-4
           bg-transparent
