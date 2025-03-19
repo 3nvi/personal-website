@@ -6,13 +6,14 @@ const Button = React.forwardRef(({ children, fullWidth, disabled, className, ...
     ref={ref}
     disabled={disabled}
     className={`
+      font-[system-ui]
+      leading-none
       transition-all duration-150 ease-in-out
       text-sm
-      border-none
       uppercase
       font-bold
       tracking-[0.15rem]
-      px-8 py-4
+      px-12 py-4
       rounded-3xl
       bg-gradient-to-l from-primary to-accent
       text-white
