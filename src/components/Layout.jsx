@@ -8,7 +8,7 @@ import GithubSVG from '../assets/icons/github.svg';
 import LinkedinSVG from '../assets/icons/linkedin.svg';
 
 const Layout = ({ children }) => (
-  <div className="w-full min-h-screen flex flex-col max-md:py-5 max-md:px-2.5 text-black">
+  <div className="container min-h-screen flex flex-col p-5 text-black">
     <NavHeader />
     <main className="flex-grow flex flex-col">{children}</main>
     <footer className="relative">
