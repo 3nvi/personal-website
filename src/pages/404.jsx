@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import SEO from '../components/SEO';
-import Container from '../components/Container';
 
 const Page404 = props => (
   <Layout>
