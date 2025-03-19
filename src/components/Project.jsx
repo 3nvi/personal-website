@@ -8,16 +8,12 @@ import 'react-image-lightbox/style.css';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { disablePageScrolling } from '../utils/helpers';
+import clsx from 'clsx';
 
 const clickableImgStyle = 'rounded overflow-hidden border border-lightgrey p-0 cursor-pointer';
 
 const ProjectBox = ({ children }) => (
-  <article
-    className="
-    py-14 w-full box-border flex flex-row-reverse lg:flex-row-reverse
-    max-lg:w-full max-lg:flex-col
-  "
-  >
+  <article className="py-14 w-full box-border flex flex-row-reverse lg:flex-row-reverse max-lg:w-full max-lg:flex-col">
     {children}
   </article>
 );
@@ -47,12 +43,7 @@ const ScreenshotList = ({ children }) => <ul className="-mx-2 flex flex-wrap">{c
 const TagContainer = ({ children }) => <ul className="flex flex-wrap mt-8">{children}</ul>;
 
 const Tag = ({ children }) => (
-  <li
-    className="
-    text-sm mr-3 mb-3 rounded-[25px] bg-lightgrey text-black text-center 
-    px-3 py-1
-  "
-  >
+  <li className="text-sm mr-3 mb-3 rounded-[25px] bg-lightgrey text-black text-center px-3 py-1">
     #{children}
   </li>
 );
@@ -136,11 +127,16 @@ function Project({
           )}
         </header>
         <Text>{description}</Text>
-        {githubUrl && (
-          <a href={githubUrl} rel="noopener noreferrer" target="_blank">
-            <Button className="mb-12 md:w-auto w-full">View on Github</Button>
-          </a>
-        )}
+        <div className="flex flex-col items-center">
+          <div className="mb-12 md:w-auto w-full">
+            {githubUrl && (
+              <a href={githubUrl} rel="noopener noreferrer" target="_blank">
+                <Button>View on Github</Button>
+              </a>
+            )}
+          </div>
+          <Button>View Project</Button>
+        </div>
       </div>
       <div className="lg:pr-3 lg:w-1/2">
         <BannerWrapper onClick={() => showLightboxFromIndex(0)}>

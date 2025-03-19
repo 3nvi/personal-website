@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const Text = ({ children, limited = false, spaced = false, ...props }) => (
   <p
-    className={`
-      leading-[1.7rem] 
-      my-8 
-      text-grey
-      ${limited ? 'max-w-[500px]' : ''}
-      ${spaced ? 'tracking-widest md:tracking-[0.15rem]' : ''}
-    `}
+    className={clsx('leading-[1.7rem] my-8 text-grey', {
+      'max-w-[500px]': limited,
+      'tracking-widest md:tracking-[0.15rem]': spaced,
+    })}
     {...props}
   >
     {children}

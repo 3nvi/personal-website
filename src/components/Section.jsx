@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const SectionHeader = ({ children }) => (
   <header className="py-8 border-b border-lightgrey">{children}</header>
@@ -15,7 +16,6 @@ Section.propTypes = {
 
 SectionHeader.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };
 
 export default Section;
