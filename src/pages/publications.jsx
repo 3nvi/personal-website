@@ -52,42 +52,38 @@ const PublicationsPage = props => {
         title="Publications"
         description="Browse Aggelos Arvanitakis' articles, podcasts & publications"
       />
-      <Grid>
-        <Column centered largeMonitor={12}>
-          <Section>
-            <Section.Header>
-              <Heading size="small">Articles</Heading>
-            </Section.Header>
-            <Text>
-              This is a list of the articles that I've posted over the years. Since early 2019, I
-              have been trying to post a new article every 10 days, but as you know, sometimes other
-              things take precedence (which is a subtle way of saying that I'm lazy). I tend to
-              write from personal experience, both from the mistakes of the past and the things I've
-              learned while working in multiple projects.
-            </Text>
-            <ul className="flex flex-wrap" id={ARTICLES_SECTION_ID}>
-              {props.data.articles.edges.map(({ node: { frontmatter: article } }) => (
-                <li key={article.title}>{renderPublication(article)}</li>
-              ))}
-            </ul>
-          </Section>
-          <Section>
-            <Section.Header>
-              <Heading size="small">Podcasts</Heading>
-            </Section.Header>
-            <Text>
-              This is a list of the podcasts that I've recently started working on. I know it's not
-              a list if it's only one, but more is coming. The main topics I tend to discuss about
-              are tips for large scale projects using React & Redux.
-            </Text>
-            <ul className="flex flex-wrap" id={PODCASTS_SECTION_ID}>
-              {props.data.podcasts.edges.map(({ node: { frontmatter: podcast } }) => (
-                <li key={podcast.title}>{renderPublication(podcast)}</li>
-              ))}
-            </ul>
-          </Section>
-        </Column>
-      </Grid>
+      <Section>
+        <Section.Header>
+          <Heading size="small">Articles</Heading>
+        </Section.Header>
+        <Text>
+          This is a list of the articles that I've posted over the years. Since early 2019, I have
+          been trying to post a new article every 10 days, but as you know, sometimes other things
+          take precedence (which is a subtle way of saying that I'm lazy). I tend to write from
+          personal experience, both from the mistakes of the past and the things I've learned while
+          working in multiple projects.
+        </Text>
+        <ul className="flex flex-wrap" id={ARTICLES_SECTION_ID}>
+          {props.data.articles.edges.map(({ node: { frontmatter: article } }) => (
+            <li key={article.title}>{renderPublication(article)}</li>
+          ))}
+        </ul>
+      </Section>
+      <Section>
+        <Section.Header>
+          <Heading size="small">Podcasts</Heading>
+        </Section.Header>
+        <Text>
+          This is a list of the podcasts that I've recently started working on. I know it's not a
+          list if it's only one, but more is coming. The main topics I tend to discuss about are
+          tips for large scale projects using React & Redux.
+        </Text>
+        <ul className="flex flex-wrap" id={PODCASTS_SECTION_ID}>
+          {props.data.podcasts.edges.map(({ node: { frontmatter: podcast } }) => (
+            <li key={podcast.title}>{renderPublication(podcast)}</li>
+          ))}
+        </ul>
+      </Section>
     </Layout>
   );
 };
