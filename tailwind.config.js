@@ -3,8 +3,11 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './data/**/*.{js,jsx,ts,tsx,md}'],
   theme: {
     fontFamily: {
-      sans: ['FuturaNew', 'sans-serif'],
+      futura: ['FuturaNew', 'sans-serif'],
       playfair: ['Playfair Display', 'FuturaNew', 'sans-serif'],
+    },
+    container: {
+      center: true,
     },
     extend: {
       colors: {
