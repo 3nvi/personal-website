@@ -29,7 +29,7 @@ const NavHeader = () => {
       to={to}
       activeClassName="active"
       className={`
-        relative tracking-[0.2rem] no-underline px-3 py-2 text-black
+        relative tracking-[0.2rem] no-underline p-4 text-black
         after:absolute after:w-[calc(100%-1.5rem)] after:left-0 after:right-0 after:bottom-0 after:mx-auto
         [&.active]:font-bold
         [&.active]:after:content-[''] [&.active]:after:h-[5px] [&.active]:after:rounded-[25px]
@@ -46,8 +46,8 @@ const NavHeader = () => {
     <PageLink
       {...props}
       className="
-        text-xl font-bold
-        md:max-lg:hidden
+        text-xl leading-none font-bold
+        max-lg:hidden
         [&.active]:after:hidden
       "
     >
@@ -59,7 +59,7 @@ const NavHeader = () => {
     <header className="flex items-center">
       <nav className="flex justify-between flex-grow">
         <ul className="md:flex md:items-center">
-          <li className="flex items-center">
+          <li className="flex items-center max-md:hidden">
             <Img fixed={logo.childImageSharp.fixed} alt="logo" />
             <HomeLink to="/">Aggelos.</HomeLink>
           </li>
@@ -71,21 +71,22 @@ const NavHeader = () => {
           max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center
           ${isMobileMenuVisible ? 'max-md:flex' : 'max-md:hidden'}
           max-md:bg-white/[0.975] max-md:z-10
+          max-md:gap-y-4 md:max-lg:gap-x-4 lg:gap-x-8
         `}
         >
-          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
+          <li className="flex">
             <PageLink to="/">Home</PageLink>
           </li>
-          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
+          <li className="flex">
             <PageLink to="/about">About</PageLink>
           </li>
-          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
+          <li className="flex">
             <PageLink to="/publications">Publications</PageLink>
           </li>
-          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
+          <li className="flex">
             <PageLink to="/projects">Projects</PageLink>
           </li>
-          <li className="flex items-center max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
+          <li className="flex max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/contact">Contact</PageLink>
           </li>
         </ul>
