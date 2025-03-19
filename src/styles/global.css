@@ -20,6 +20,8 @@
   }
 
   html {
+    @apply leading-none font-futura;
+    
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
