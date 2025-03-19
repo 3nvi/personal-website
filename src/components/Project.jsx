@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 import Lightbox from 'react-image-lightbox';
 import Text from './Text';
@@ -11,104 +9,53 @@ import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { disablePageScrolling } from '../utils/helpers';
 
-const clickableImgStyle = css`
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid #f1f1f1;
-  padding: 0;
-  cursor: pointer;
-`;
+const clickableImgStyle = 'rounded overflow-hidden border border-lightgrey p-0 cursor-pointer';
 
-const ProjectBox = styled.article`
-  padding: ${({ theme }) => `${theme.spacing.xl} 0`};
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row-reverse; // for proper tab focusing
+const ProjectBox = ({ children }) => (
+  <article
+    className="
+    py-14 w-full box-border flex flex-row-reverse lg:flex-row-reverse
+    max-lg:w-full max-lg:flex-col
+  "
+  >
+    {children}
+  </article>
+);
 
-  @media only screen and (max-width: 1199px) {
-    width: 100%;
-    flex-direction: column;
-  }
+const ProjectHeading = ({ children, ...props }) => (
+  <h2 className="text-3xl font-bold text-black mb-3 hover:underline" {...props}>
+    {children}
+  </h2>
+);
 
-  ${Text} {
-    text-align: justify;
-  }
-`;
+const BannerWrapper = ({ children, ...props }) => (
+  <button className={`${clickableImgStyle} w-full max-h-[350px] m-0`} {...props}>
+    <div className="max-h-inherit">{children}</div>
+  </button>
+);
 
-const ImagesContainer = styled.div`
-  @media only screen and (min-width: 1200px) {
-    padding-right: ${({ theme }) => theme.spacing.sm};
-    width: 50%;
-  }
-`;
-
-const DetailsBox = styled.div`
-  @media only screen and (min-width: 1200px) {
-    padding-left: ${({ theme }) => theme.spacing.sm};
-    width: 50%;
-  }
-`;
-
-const TagContainer = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: ${({ theme }) => theme.spacing.md};
-`;
-
-const Tag = styled.li`
-  font-size: 0.8rem;
-  margin-right: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  border-radius: 25px;
-  background-color: ${({ theme }) => theme.colors.lightgrey};
-  color: ${({ theme }) => theme.colors.black};
-  text-align: center;
-  padding: ${({ theme }) => `${theme.spacing.xs} ${theme.spacing.sm}`};
-`;
-
-const ProjectHeading = styled.h2`
-  font-size: 2rem;
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const BannerWrapper = styled.button`
-  ${clickableImgStyle};
-  width: 100%;
-  max-height: 350px;
-  margin: 0;
-
-  .gatsby-image-wrapper {
-    max-height: inherit;
-  }
-`;
-
-const ScreenshotListItem = styled(props => (
+const ScreenshotListItem = ({ children, ...props }) => (
   <li>
-    <button {...props} />
+    <button className={`${clickableImgStyle} m-2`} {...props}>
+      {children}
+    </button>
   </li>
-))`
-  ${clickableImgStyle};
-  margin: ${({ theme }) => theme.spacing.xs};
-`;
+);
 
-const ScreenshotList = styled.ul`
-  margin: ${({ theme }) => `${theme.spacing.xs} -${theme.spacing.xs}`};
-  display: flex;
-  flex-wrap: wrap;
-`;
+const ScreenshotList = ({ children }) => <ul className="-mx-2 flex flex-wrap">{children}</ul>;
 
-const GithubButton = styled(Button)`
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-  }
-`;
+const TagContainer = ({ children }) => <ul className="flex flex-wrap mt-8">{children}</ul>;
+
+const Tag = ({ children }) => (
+  <li
+    className="
+    text-sm mr-3 mb-3 rounded-[25px] bg-lightgrey text-black text-center 
+    px-3 py-1
+  "
+  >
+    #{children}
+  </li>
+);
 
 const screenshotImgWrapperStyle = {
   width: '60px',
@@ -123,7 +70,7 @@ function Project({
   description,
   bannerImgData,
   tags,
-  screenshotListImgData,
+  screenshotListImgData = [],
   githubUrl,
 }) {
   const { site } = useStaticQuery(
@@ -175,7 +122,7 @@ function Project({
           })}
         </script>
       </Helmet>
-      <DetailsBox>
+      <div className="lg:pl-3 lg:w-1/2">
         <header>
           <a href={href} rel="noopener noreferrer" target="_blank">
             <ProjectHeading>{title}</ProjectHeading>
@@ -183,7 +130,7 @@ function Project({
           {!!tags.length && (
             <TagContainer>
               {tags.map(tag => (
-                <Tag key={tag}>#{tag}</Tag>
+                <Tag key={tag}>{tag}</Tag>
               ))}
             </TagContainer>
           )}
@@ -191,11 +138,11 @@ function Project({
         <Text>{description}</Text>
         {githubUrl && (
           <a href={githubUrl} rel="noopener noreferrer" target="_blank">
-            <GithubButton>View on Github</GithubButton>
+            <Button className="mb-12 md:w-auto w-full">View on Github</Button>
           </a>
         )}
-      </DetailsBox>
-      <ImagesContainer>
+      </div>
+      <div className="lg:pr-3 lg:w-1/2">
         <BannerWrapper onClick={() => showLightboxFromIndex(0)}>
           <Img alt="Project Banner" fluid={bannerImgData} />
         </BannerWrapper>
@@ -210,7 +157,7 @@ function Project({
             </ScreenshotListItem>
           ))}
         </ScreenshotList>
-      </ImagesContainer>
+      </div>
       {isLightboxVisible && (
         <Lightbox
           enableZoom={false}

@@ -28,50 +28,40 @@ const ProjectsPage = props => {
         title="Projects"
         description="Browse Aggelos Arvanitakis' freelancing, open source & fun projects"
       />
-      <Grid>
-        <Column centered largeMonitor={12}>
-          <Section>
-            <Section.Header>
-              <Heading size="small">Commercial Projects</Heading>
-            </Section.Header>
-            <Text>
-              This is a list of projects that I have professionally worked on. The technologies
-              shown in the tags, are not only the ones that this particular project employs, but the
-              ones that I have personally worked with in each product. The list is not exhaustive,
-              but only includes the projects that I'm allowed to disclose.
-            </Text>
-            <ul id="commercial-projects">
-              {props.data.commercialProjects.edges.map(({ node: { frontmatter: project } }) => (
-                <li
-                  key={project.title}
-                  className="[&:not(:last-of-type)]:border-b border-lightgrey"
-                >
-                  {renderProject(project)}
-                </li>
-              ))}
-            </ul>
-          </Section>
-          <Section>
-            <Section.Header>
-              <Heading size="small">Open Source & Fun Projects</Heading>
-            </Section.Header>
-            <Text>
-              This is a list of projects that I have either open-sourced or developed for fun. At
-              least they were all "fun" in the beginning...
-            </Text>
-            <ul id="fun-projects">
-              {props.data.funProjects.edges.map(({ node: { frontmatter: project } }) => (
-                <li
-                  key={project.title}
-                  className="[&:not(:last-of-type)]:border-b border-lightgrey"
-                >
-                  {renderProject(project)}
-                </li>
-              ))}
-            </ul>
-          </Section>
-        </Column>
-      </Grid>
+      <Section>
+        <Section.Header>
+          <Heading size="small">Commercial Projects</Heading>
+        </Section.Header>
+        <Text>
+          This is a list of projects that I have professionally worked on. The technologies shown in
+          the tags, are not only the ones that this particular project employs, but the ones that I
+          have personally worked with in each product. The list is not exhaustive, but only includes
+          the projects that I'm allowed to disclose.
+        </Text>
+        <ul id="commercial-projects">
+          {props.data.commercialProjects.edges.map(({ node: { frontmatter: project } }) => (
+            <li key={project.title} className="[&:not(:last-of-type)]:border-b border-lightgrey">
+              {renderProject(project)}
+            </li>
+          ))}
+        </ul>
+      </Section>
+      <Section>
+        <Section.Header>
+          <Heading size="small">Open Source & Fun Projects</Heading>
+        </Section.Header>
+        <Text>
+          This is a list of projects that I have either open-sourced or developed for fun. At least
+          they were all "fun" in the beginning...
+        </Text>
+        <ul id="fun-projects">
+          {props.data.funProjects.edges.map(({ node: { frontmatter: project } }) => (
+            <li key={project.title} className="[&:not(:last-of-type)]:border-b border-lightgrey">
+              {renderProject(project)}
+            </li>
+          ))}
+        </ul>
+      </Section>
     </Layout>
   );
 };
