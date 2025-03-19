@@ -7,9 +7,6 @@ import Heading from '../components/Heading';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
-import Container from '../components/Container';
-import Column from '../components/Column';
-import Grid from '../components/Grid';
 
 const HeadingWithMobileStyle = props => (
   <Heading className="border-solid border-black max-md:border-y-8 max-md:py-4" {...props} />

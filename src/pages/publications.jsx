@@ -6,8 +6,6 @@ import Heading from '../components/Heading';
 import Publication from '../components/Publication';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
-import Grid from '../components/Grid';
-import Column from '../components/Column';
 import Section from '../components/Section';
 
 const PublicationsPage = props => {
