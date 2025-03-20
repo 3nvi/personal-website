@@ -4,18 +4,18 @@ import AutosizeableTextarea from 'react-textarea-autosize';
 import { Form as FormikForm, Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Layout from '../components/Layout';
-import Heading from '../components/Heading';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
+import Heading from '../components/Heading';
 
-const FormError = ({ children }) => <p className="text-xs mt-1 text-red-600">{children}</p>;
+const FormError = ({ children }) => <p className="mt-1 text-xs text-red-600">{children}</p>;
 
 const Input = ({ form, field, ...rest }) => (
   <input
     {...field}
     {...rest}
-    className="w-full border-0 border-b border-gray-200 py-2 font-inherit rounded-none outline-none text-black focus:border-gray-400"
+    className="font-inherit w-full rounded-none border-0 border-b border-gray-200 py-2 text-black outline-none focus:border-gray-400"
   />
 );
 
@@ -23,7 +23,7 @@ const Textarea = ({ form, field, ...rest }) => (
   <AutosizeableTextarea
     {...field}
     {...rest}
-    className="w-full border-0 border-b border-gray-200 py-2 font-inherit rounded-none outline-none text-black focus:border-gray-400"
+    className="font-inherit w-full rounded-none border-0 border-b border-gray-200 py-2 text-black outline-none focus:border-gray-400"
   />
 );
 
@@ -63,7 +63,7 @@ const ContactPage = () => {
     <Layout>
       <SEO title="Contact" />
 
-      <div className="flex flex-col max-w-xl mx-auto flex-grow justify-center">
+      <div className="mx-auto flex max-w-xl flex-grow flex-col justify-center">
         <Heading size="small">Get in touch</Heading>
         <Text>
           If you want to get in touch with me after all you've seen, then please fill this form and
@@ -74,7 +74,7 @@ const ContactPage = () => {
           .
         </Text>
         {isMessageSent ? (
-          <div className="px-4 py-8 mt-4 rounded bg-black text-white text-center">
+          <div className="mt-4 rounded bg-black px-4 py-8 text-center text-white">
             Your message has been sent!
           </div>
         ) : (

@@ -11,31 +11,29 @@ const NavHeader = () => {
     disablePageScrolling(isMobileMenuVisible);
   }, [isMobileMenuVisible]);
 
-  const { logo } = useStaticQuery(
-    graphql`
-      query {
-        logo: file(name: { eq: "favicon" }, relativeDirectory: { eq: "img" }) {
-          childImageSharp {
-            fixed(width: 30, height: 30) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+  const { logo } = useStaticQuery(graphql`
+    query {
+      logo: file(name: { eq: "favicon" }, relativeDirectory: { eq: "img" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
       }
-    `
-  );
+    }
+  `);
 
   const PageLink = ({ to, children, className = '' }) => (
     <Link
       to={to}
       activeClassName="active"
       className={clsx(
-        'relative tracking-[0.2rem] no-underline p-4 text-black',
-        'after:absolute after:w-[calc(100%-1.5rem)] after:left-0 after:right-0 after:bottom-0 after:mx-auto',
+        'relative p-4 tracking-[0.2rem] text-black no-underline',
+        'after:absolute after:bottom-0 after:left-0 after:right-0 after:mx-auto after:w-[calc(100%-1.5rem)]',
         '[&.active]:font-bold',
-        "[&.active]:after:content-[''] [&.active]:after:h-[5px] [&.active]:after:rounded-[25px]",
+        "[&.active]:after:h-[5px] [&.active]:after:rounded-[25px] [&.active]:after:content-['']",
         '[&.active]:after:bg-gradient-to-l [&.active]:after:from-primary [&.active]:after:to-accent',
-        "hover:[&:not(.active)]:after:content-[''] hover:[&:not(.active)]:after:h-px hover:[&:not(.active)]:after:bg-black",
+        "hover:[&:not(.active)]:after:h-px hover:[&:not(.active)]:after:bg-black hover:[&:not(.active)]:after:content-['']",
         className
       )}
     >
@@ -46,15 +44,15 @@ const NavHeader = () => {
   const HomeLink = ({ children, ...props }) => (
     <PageLink
       {...props}
-      className="text-xl leading-none font-bold max-lg:hidden [&.active]:after:hidden"
+      className="text-xl font-bold leading-none max-lg:hidden [&.active]:after:hidden"
     >
       {children}
     </PageLink>
   );
 
   return (
-    <header className="sticky bg-white top-0 z-10 py-3 flex items-center max-md:mb-16">
-      <nav className="flex justify-between flex-grow">
+    <header className="sticky top-0 z-10 flex items-center bg-white py-3 max-md:mb-16">
+      <nav className="flex flex-grow justify-between">
         <ul className="md:flex md:items-center">
           <li className="flex items-center max-md:hidden">
             <Img fixed={logo.childImageSharp.fixed} alt="logo" />
@@ -64,10 +62,10 @@ const NavHeader = () => {
         <ul
           className={clsx(
             'md:flex md:items-center',
-            'max-md:fixed max-md:w-screen max-md:h-screen max-md:top-0 max-md:left-0',
-            'max-md:flex-col max-md:justify-center max-md:items-center max-md:text-center',
+            'max-md:fixed max-md:left-0 max-md:top-0 max-md:h-screen max-md:w-screen',
+            'max-md:flex-col max-md:items-center max-md:justify-center max-md:text-center',
             isMobileMenuVisible ? 'max-md:flex' : 'max-md:hidden',
-            'max-md:bg-white/[0.975] max-md:z-10',
+            'max-md:z-10 max-md:bg-white/[0.975]',
             'max-md:gap-y-4 md:max-lg:gap-x-4 lg:gap-x-8'
           )}
         >
@@ -98,10 +96,10 @@ const NavHeader = () => {
           'p-4',
           'bg-transparent',
           'border-none',
-          "before:content-[''] before:block before:w-[30px] before:h-px before:bg-black",
+          "before:block before:h-px before:w-[30px] before:bg-black before:content-['']",
           'before:transition-all before:duration-200 before:ease-linear',
           isMobileMenuVisible ? 'before:translate-y-[3px] before:rotate-45' : 'before:mb-[15px]',
-          "after:content-[''] after:block after:w-[30px] after:h-px after:bg-black",
+          "after:block after:h-px after:w-[30px] after:bg-black after:content-['']",
           'after:transition-all after:duration-200 after:ease-linear',
           isMobileMenuVisible ? 'after:translate-y-[3px] after:-rotate-45' : ''
         )}

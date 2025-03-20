@@ -2,10 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import MagicGrid from 'magic-grid';
 import Layout from '../components/Layout';
-import Heading from '../components/Heading';
 import Publication from '../components/Publication';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
+import Heading from '../components/Heading';
 
 const PublicationsPage = props => {
   const ARTICLES_SECTION_ID = 'articles';
@@ -50,7 +50,7 @@ const PublicationsPage = props => {
         description="Browse Aggelos Arvanitakis' articles, podcasts & publications"
       />
       <section className="md:my-20">
-        <header className="py-8 border-b border-lightgrey">
+        <header className="border-b border-lightgrey py-8">
           <Heading size="small">Articles</Heading>
         </header>
         <Text>
@@ -67,7 +67,7 @@ const PublicationsPage = props => {
         </ul>
       </section>
       <section className="md:my-20">
-        <header className="py-8 border-b border-lightgrey">
+        <header className="border-b border-lightgrey py-8">
           <Heading size="small">Podcasts</Heading>
         </header>
         <Text>

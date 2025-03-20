@@ -20,7 +20,7 @@ module.exports = {
         danger: '#c80000',
       },
       gridTemplateColumns: {
-        '16': 'repeat(16, minmax(0, 1fr))',
+        16: 'repeat(16, minmax(0, 1fr))',
       },
       gridColumn: {
         'span-13': 'span 13 / span 13',
@@ -29,11 +29,11 @@ module.exports = {
         'span-16': 'span 16 / span 16',
       },
       gridColumnStart: {
-        '13': '13',
-        '14': '14',
-        '15': '15',
-        '16': '16',
-        '17': '17',
+        13: '13',
+        14: '14',
+        15: '15',
+        16: '16',
+        17: '17',
       },
     },
     screens: {

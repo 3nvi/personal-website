@@ -2,8 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/Layout';
-import Heading from '../components/Heading';
+import Text from '../components/Text';
 import SEO from '../components/SEO';
+import Heading from '../components/Heading';
 
 const Page404 = props => (
   <Layout>

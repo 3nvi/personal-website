@@ -13,19 +13,19 @@ import clsx from 'clsx';
 const clickableImgStyle = 'rounded overflow-hidden border border-lightgrey p-0 cursor-pointer';
 
 const ProjectBox = ({ children }) => (
-  <article className="py-14 w-full box-border flex flex-row-reverse lg:flex-row-reverse max-lg:w-full max-lg:flex-col">
+  <article className="box-border flex w-full flex-row-reverse py-14 max-lg:w-full max-lg:flex-col lg:flex-row-reverse">
     {children}
   </article>
 );
 
 const ProjectHeading = ({ children, ...props }) => (
-  <h2 className="text-3xl font-bold text-black mb-3 hover:underline" {...props}>
+  <h2 className="mb-3 text-3xl font-bold text-black hover:underline" {...props}>
     {children}
   </h2>
 );
 
 const BannerWrapper = ({ children, ...props }) => (
-  <button className={clsx(clickableImgStyle, 'w-full max-h-[350px] m-0')} {...props}>
+  <button className={clsx(clickableImgStyle, 'm-0 max-h-[350px] w-full')} {...props}>
     <div className="max-h-inherit">{children}</div>
   </button>
 );
@@ -40,10 +40,10 @@ const ScreenshotListItem = ({ children, ...props }) => (
 
 const ScreenshotList = ({ children }) => <ul className="-mx-2 flex flex-wrap">{children}</ul>;
 
-const TagContainer = ({ children }) => <ul className="flex flex-wrap mt-8">{children}</ul>;
+const TagContainer = ({ children }) => <ul className="mt-8 flex flex-wrap">{children}</ul>;
 
 const Tag = ({ children }) => (
-  <li className="text-sm mr-3 mb-3 rounded-[25px] bg-lightgrey text-black text-center px-3 py-1">
+  <li className="mb-3 mr-3 rounded-[25px] bg-lightgrey px-3 py-1 text-center text-sm text-black">
     #{children}
   </li>
 );
@@ -64,17 +64,15 @@ function Project({
   screenshotListImgData = [],
   githubUrl,
 }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            image
-          }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          image
         }
       }
-    `
-  );
+    }
+  `);
 
   const [isLightboxVisible, setLightboxVisibility] = React.useState(false);
   const [lightboxImgIndex, setLightboxImgIndex] = React.useState(null);
@@ -113,7 +111,7 @@ function Project({
           })}
         </script>
       </Helmet>
-      <div className="lg:pl-3 lg:w-1/2">
+      <div className="lg:w-1/2 lg:pl-3">
         <header>
           <a href={href} rel="noopener noreferrer" target="_blank">
             <ProjectHeading>{title}</ProjectHeading>
@@ -128,14 +126,14 @@ function Project({
         </header>
         <Text>{description}</Text>
         {githubUrl && (
-          <div className="mb-12 md:w-auto w-full">
+          <div className="mb-12 w-full md:w-auto">
             <a href={githubUrl} rel="noopener noreferrer" target="_blank">
               <Button>View on Github</Button>
             </a>
           </div>
         )}
       </div>
-      <div className="lg:pr-3 lg:w-1/2">
+      <div className="lg:w-1/2 lg:pr-3">
         <BannerWrapper onClick={() => showLightboxFromIndex(0)}>
           <Img alt="Project Banner" fluid={bannerImgData} />
         </BannerWrapper>

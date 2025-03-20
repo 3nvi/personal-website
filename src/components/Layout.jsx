@@ -8,9 +8,9 @@ import GithubSVG from '../assets/icons/github.svg';
 import LinkedinSVG from '../assets/icons/linkedin.svg';
 
 const Layout = ({ children }) => (
-  <div className="container min-h-screen flex flex-col p-5 text-black">
+  <div className="container flex min-h-screen flex-col p-5 text-black">
     <NavHeader />
-    <main className="flex-grow flex flex-col">{children}</main>
+    <main className="flex flex-grow flex-col">{children}</main>
     <footer className="relative">
       <address className="flex justify-center">
         <a
@@ -19,8 +19,8 @@ const Layout = ({ children }) => (
           aria-label="Twitter"
           className="p-2.5"
         >
-          <div className="w-8 h-8 rounded-full bg-gray-500 hover:bg-black hover:translate-y-[-4px] transition-colors flex items-center justify-center">
-            <TwitterSVG className="w-3 h-3 fill-white" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+            <TwitterSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
 
@@ -30,8 +30,8 @@ const Layout = ({ children }) => (
           aria-label="Medium"
           className="p-2.5"
         >
-          <div className="w-8 h-8 rounded-full bg-gray-500 hover:bg-black hover:translate-y-[-4px] transition-colors flex items-center justify-center">
-            <MediumSVG className="w-3 h-3 fill-white" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+            <MediumSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
 
@@ -41,8 +41,8 @@ const Layout = ({ children }) => (
           aria-label="Github"
           className="p-2.5"
         >
-          <div className="w-8 h-8 rounded-full bg-gray-500 hover:bg-black hover:translate-y-[-4px] transition-colors flex items-center justify-center">
-            <GithubSVG className="w-3 h-3 fill-white" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+            <GithubSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
 
@@ -52,12 +52,12 @@ const Layout = ({ children }) => (
           aria-label="Linkedin"
           className="p-2.5"
         >
-          <div className="w-8 h-8 rounded-full bg-gray-500 hover:bg-black hover:translate-y-[-4px] transition-colors flex items-center justify-center">
-            <LinkedinSVG className="w-3 h-3 fill-white" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+            <LinkedinSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
       </address>
-      <p className="absolute right-0 bottom-4 hidden lg:block">© Aggelos Arvanitakis</p>
+      <p className="absolute bottom-4 right-0 hidden lg:block">© Aggelos Arvanitakis</p>
     </footer>
   </div>
 );

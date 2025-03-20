@@ -8,7 +8,10 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Book.woff2') format('woff2');
+    src:
+      local('FuturaNew'),
+      local('Futura New'),
+      url('/fonts/Futura-Book.woff2') format('woff2');
   }
 
   @font-face {
@@ -16,12 +19,15 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: local('FuturaNew'), local('Futura New'), url('/fonts/Futura-Bold.woff2') format('woff2');
+    src:
+      local('FuturaNew'),
+      local('Futura New'),
+      url('/fonts/Futura-Bold.woff2') format('woff2');
   }
 
   html {
-    @apply leading-none font-futura;
-    
+    @apply font-futura leading-none;
+
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;

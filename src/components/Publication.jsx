@@ -16,21 +16,19 @@ function Publication({
   publisher,
 }) {
   const creationDateToIso = createdAt.replace(/\//, '-');
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            image
-            logo
-          }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          image
+          logo
         }
       }
-    `
-  );
+    }
+  `);
 
   return (
-    <article className="p-5 border border-lightgrey rounded-sm w-[550px] box-border max-md:w-full">
+    <article className="box-border w-[550px] rounded-sm border border-lightgrey p-5 max-md:w-full">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -61,16 +59,16 @@ function Publication({
         </script>
       </Helmet>
       <a href={href} target="_blank" rel="noopener noreferrer" className="group">
-        <Img fluid={bannerImgData} alt={title} className="rounded min-h-[200px]" />
+        <Img fluid={bannerImgData} alt={title} className="min-h-[200px] rounded" />
 
-        <h2 className="text-xl font-bold text-black my-3 leading-6 group-hover:underline">
+        <h2 className="my-3 text-xl font-bold leading-6 text-black group-hover:underline">
           {title}
         </h2>
       </a>
 
       <div className="flex items-center text-sm">
         <time>{dayjs(createdAt).format('MMM DD, YYYY')}</time>
-        <span className="w-[3px] h-[3px] rounded-full mx-2 bg-black" />
+        <span className="mx-2 h-[3px] w-[3px] rounded-full bg-black" />
         <span>{timeInMinutes} min read</span>
       </div>
 
