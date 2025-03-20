@@ -15,7 +15,7 @@ const Input = ({ form, field, ...rest }) => (
   <input
     {...field}
     {...rest}
-    className="font-inherit w-full rounded-none border-0 border-b border-gray-200 py-2 text-black outline-none focus:border-gray-400"
+    className="w-full border-0 border-b border-gray-200 py-2 outline-none focus:border-gray-400"
   />
 );
 
@@ -23,7 +23,7 @@ const Textarea = ({ form, field, ...rest }) => (
   <AutosizeableTextarea
     {...field}
     {...rest}
-    className="font-inherit w-full rounded-none border-0 border-b border-gray-200 py-2 text-black outline-none focus:border-gray-400"
+    className="w-full border-0 border-b border-gray-200 py-2 outline-none focus:border-gray-400"
   />
 );
 
