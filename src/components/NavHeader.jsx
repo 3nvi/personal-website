@@ -51,7 +51,7 @@ const NavHeader = () => {
   );
 
   return (
-    <header className="sticky top-0 z-10 flex items-center bg-white py-3 max-md:mb-16">
+    <header className="flex items-center max-md:mb-16">
       <nav className="flex flex-grow justify-between">
         <ul className="md:flex md:items-center">
           <li className="flex items-center max-md:hidden">

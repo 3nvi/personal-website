@@ -99,7 +99,9 @@
       "git add"
     ],
     "*.{js,jsx}": [
-      "eslint"
+      "eslint --fix",
+      "prettier --write",
+      "git add"
     ]
   },
   "resolutions": {

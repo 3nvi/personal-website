@@ -10,9 +10,11 @@ const Page404 = props => (
   <Layout>
     <SEO title="Not Found" />
     <div className="flex flex-grow items-center justify-evenly">
-      <Heading className="max-lg:border-b-8 max-lg:border-t-8 max-lg:py-8">
-        404 <br /> Not found
-      </Heading>
+      <header className="max-lg:py-8d border-black max-lg:border-y-8">
+        <Heading>
+          404 <br /> Not found
+        </Heading>
+      </header>
       <div className="flex-shrink-0 max-lg:hidden">
         <Img fixed={props.data.heroImage.childImageSharp.fixed} alt="Not Found" />
       </div>
