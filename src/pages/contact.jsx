@@ -106,9 +106,11 @@ const ContactPage = () => {
                   <Field component={Textarea} type="number" name="body" id="body" />
                   <ErrorMessage component={FormError} name="body" />
                 </fieldset>
-                <Button fullWidth type="submit" disabled={isSubmitting || !isValid}>
-                  Send message
-                </Button>
+                <div className="grid">
+                  <Button type="submit" disabled={isSubmitting || !isValid}>
+                    Send message
+                  </Button>
+                </div>
               </FormikForm>
             )}
           </Formik>
