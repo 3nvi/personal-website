@@ -84,7 +84,7 @@ const ContactPage = () => {
             validationSchema={validationSchema}
           >
             {({ isSubmitting, isValid }) => (
-              <FormikForm className="space-y-12" noValidate>
+              <FormikForm className="space-y-12 pb-4" noValidate>
                 <fieldset>
                   <label htmlFor="email" className="text-sm text-gray-500">
                     Your email address
