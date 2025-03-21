@@ -8,7 +8,7 @@ import GithubSVG from '../assets/icons/github.svg';
 import LinkedinSVG from '../assets/icons/linkedin.svg';
 
 const Layout = ({ children }) => (
-  <div className="container flex min-h-screen flex-col p-5 text-black">
+  <div className="container flex min-h-screen flex-col p-5 text-darkgrey">
     <NavHeader />
     <main className="flex flex-grow flex-col">{children}</main>
     <footer className="relative">
@@ -19,7 +19,7 @@ const Layout = ({ children }) => (
           aria-label="Twitter"
           className="p-2.5"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-darkgrey">
             <TwitterSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
@@ -30,7 +30,7 @@ const Layout = ({ children }) => (
           aria-label="Medium"
           className="p-2.5"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-darkgrey">
             <MediumSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
@@ -41,7 +41,7 @@ const Layout = ({ children }) => (
           aria-label="Github"
           className="p-2.5"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-darkgrey">
             <GithubSVG className="h-3 w-3 fill-white" />
           </div>
         </a>
@@ -52,7 +52,7 @@ const Layout = ({ children }) => (
           aria-label="Linkedin"
           className="p-2.5"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-black">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-500 transition-colors hover:translate-y-[-4px] hover:bg-darkgrey">
             <LinkedinSVG className="h-3 w-3 fill-white" />
           </div>
         </a>

@@ -61,14 +61,14 @@ function Publication({
       <a href={href} target="_blank" rel="noopener noreferrer" className="group">
         <Img fluid={bannerImgData} alt={title} className="min-h-[200px] rounded" />
 
-        <h2 className="my-3 text-xl font-bold leading-6 text-black group-hover:underline">
+        <h2 className="my-3 text-xl font-bold leading-6 text-darkgrey group-hover:underline">
           {title}
         </h2>
       </a>
 
       <div className="flex items-center text-sm">
         <time>{dayjs(createdAt).format('MMM DD, YYYY')}</time>
-        <span className="mx-2 h-[3px] w-[3px] rounded-full bg-black" />
+        <span className="mx-2 h-[3px] w-[3px] rounded-full bg-darkgrey" />
         <span>{timeInMinutes} min read</span>
       </div>
 
