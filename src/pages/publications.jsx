@@ -7,22 +7,10 @@ import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Heading from '../components/Heading';
 
-const ARTICLES_SECTION_ID = 'articles';
-const PODCASTS_SECTION_ID = 'podcasts';
-
-const renderPublication = publication => (
-  <Publication
-    title={publication.title}
-    createdAt={publication.createdAt}
-    description={publication.description}
-    timeInMinutes={publication.timeInMinutes}
-    href={publication.href}
-    publisher={publication.publisher}
-    bannerImgData={publication.banner.childImageSharp.fluid}
-  />
-);
-
 const PublicationsPage = props => {
+  const ARTICLES_SECTION_ID = 'articles';
+  const PODCASTS_SECTION_ID = 'podcasts';
+
   React.useEffect(() => {
     const magicGridOptions = {
       static: true,
@@ -42,6 +30,18 @@ const PublicationsPage = props => {
       container: `#${PODCASTS_SECTION_ID}`,
     }).listen();
   }, []);
+
+  const renderPublication = publication => (
+    <Publication
+      title={publication.title}
+      createdAt={publication.createdAt}
+      description={publication.description}
+      timeInMinutes={publication.timeInMinutes}
+      href={publication.href}
+      publisher={publication.publisher}
+      bannerImgData={publication.banner.childImageSharp.fluid}
+    />
+  );
 
   return (
     <Layout>
