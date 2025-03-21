@@ -5,9 +5,9 @@ import clsx from 'clsx';
 const Heading = ({ children, size = 'large' }) => (
   <h1
     className={clsx(
-      'font-playfair',
-      size === 'small' && 'text-5xl md:text-6xl lg:text-6xl xl:text-7xl',
-      size === 'large' && 'text-5xl md:text-8xl lg:text-9xl xl:text-[10rem]'
+      'font-playfair text-5xl',
+      size === 'small' && 'md:text-6xl lg:text-6xl xl:text-7xl',
+      size === 'large' && 'md:text-8xl lg:text-9xl xl:text-[10rem]'
     )}
   >
     {children}
