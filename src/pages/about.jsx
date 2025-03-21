@@ -8,17 +8,19 @@ import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
 
-const HeadingWithMobileStyle = props => (
-  <header className="border-solid border-gray-700 max-md:border-y-8 max-md:py-4">
-    <Heading {...props} />
-  </header>
-);
-
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
-    h1: HeadingWithMobileStyle,
-    p: props => <Text limited {...props} />,
+    h1: props => (
+      <header className="border-solid border-gray-700 max-md:border-y-8 max-md:py-4">
+        <Heading {...props} />
+      </header>
+    ),
+    p: props => (
+      <section className="max-w-[500px]">
+        <Text {...props} />
+      </section>
+    ),
   },
 }).Compiler;
 
