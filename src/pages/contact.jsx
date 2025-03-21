@@ -74,7 +74,7 @@ const ContactPage = () => {
           .
         </Text>
         {isMessageSent ? (
-          <div className="mt-4 rounded bg-darkgrey px-4 py-8 text-center text-white">
+          <div className="mt-4 rounded bg-gray-700 px-4 py-8 text-center text-white">
             Your message has been sent!
           </div>
         ) : (

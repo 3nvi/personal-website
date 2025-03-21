@@ -28,12 +28,12 @@ const NavHeader = () => {
       to={to}
       activeClassName="active"
       className={clsx(
-        'relative p-4 tracking-[0.2rem] text-darkgrey no-underline',
+        'relative p-4 tracking-[0.2rem] text-gray-700 no-underline',
         'after:absolute after:bottom-0 after:left-0 after:right-0 after:mx-auto after:w-[calc(100%-1.5rem)]',
         '[&.active]:font-bold',
         "[&.active]:after:h-[5px] [&.active]:after:rounded-[25px] [&.active]:after:content-['']",
         '[&.active]:after:bg-gradient-to-l [&.active]:after:from-primary [&.active]:after:to-accent',
-        "hover:[&:not(.active)]:after:h-px hover:[&:not(.active)]:after:bg-darkgrey hover:[&:not(.active)]:after:content-['']",
+        "hover:[&:not(.active)]:after:h-px hover:[&:not(.active)]:after:bg-gray-700 hover:[&:not(.active)]:after:content-['']",
         className
       )}
     >
@@ -96,10 +96,10 @@ const NavHeader = () => {
           'p-4',
           'bg-transparent',
           'border-none',
-          "before:block before:h-px before:w-[30px] before:bg-darkgrey before:content-['']",
+          "before:block before:h-px before:w-[30px] before:bg-gray-700 before:content-['']",
           'before:transition-all before:duration-200 before:ease-linear',
           isMobileMenuVisible ? 'before:translate-y-[3px] before:rotate-45' : 'before:mb-[15px]',
-          "after:block after:h-px after:w-[30px] after:bg-darkgrey after:content-['']",
+          "after:block after:h-px after:w-[30px] after:bg-gray-700 after:content-['']",
           'after:transition-all after:duration-200 after:ease-linear',
           isMobileMenuVisible ? 'after:translate-y-[3px] after:-rotate-45' : ''
         )}

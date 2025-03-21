@@ -10,7 +10,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { disablePageScrolling } from '../utils/helpers';
 import clsx from 'clsx';
 
-const clickableImgStyle = 'rounded overflow-hidden border border-lightgrey p-0 cursor-pointer';
+const clickableImgStyle = 'rounded overflow-hidden border border-gray-200 p-0 cursor-pointer';
 
 const ProjectBox = ({ children }) => (
   <article className="box-border flex w-full flex-row-reverse py-14 max-lg:w-full max-lg:flex-col lg:flex-row-reverse">
@@ -19,7 +19,7 @@ const ProjectBox = ({ children }) => (
 );
 
 const ProjectHeading = ({ children, ...props }) => (
-  <h2 className="mb-3 text-3xl font-bold text-darkgrey hover:underline" {...props}>
+  <h2 className="mb-3 text-3xl font-bold text-gray-700 hover:underline" {...props}>
     {children}
   </h2>
 );
@@ -43,7 +43,7 @@ const ScreenshotList = ({ children }) => <ul className="-mx-2 flex flex-wrap">{c
 const TagContainer = ({ children }) => <ul className="mt-8 flex flex-wrap">{children}</ul>;
 
 const Tag = ({ children }) => (
-  <li className="mb-3 mr-3 rounded-[25px] bg-lightgrey px-3 py-1 text-center text-sm text-darkgrey">
+  <li className="mb-3 mr-3 rounded-[25px] bg-gray-200 px-3 py-1 text-center text-sm text-gray-700">
     #{children}
   </li>
 );

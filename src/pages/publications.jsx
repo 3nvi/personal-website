@@ -50,7 +50,7 @@ const PublicationsPage = props => {
         description="Browse Aggelos Arvanitakis' articles, podcasts & publications"
       />
       <section className="md:my-20">
-        <header className="border-b border-lightgrey py-8">
+        <header className="border-b border-gray-200 py-8">
           <Heading size="small">Articles</Heading>
         </header>
         <Text>
@@ -67,7 +67,7 @@ const PublicationsPage = props => {
         </ul>
       </section>
       <section className="md:my-20">
-        <header className="border-b border-lightgrey py-8">
+        <header className="border-b border-gray-200 py-8">
           <Heading size="small">Podcasts</Heading>
         </header>
         <Text>

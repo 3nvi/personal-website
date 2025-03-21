@@ -9,7 +9,7 @@ import SEO from '../components/SEO';
 import Button from '../components/Button';
 
 const HeadingWithMobileStyle = props => (
-  <header className="border-solid border-black max-md:border-y-8 max-md:py-4">
+  <header className="border-solid border-gray-700 max-md:border-y-8 max-md:py-4">
     <Heading {...props} />
   </header>
 );

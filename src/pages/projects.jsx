@@ -26,7 +26,7 @@ const ProjectsPage = props => {
         description="Browse Aggelos Arvanitakis' freelancing, open source & fun projects"
       />
       <section className="md:my-20">
-        <header className="border-b border-lightgrey py-8">
+        <header className="border-b border-gray-200 py-8">
           <Heading size="small">Commercial Projects</Heading>
         </header>
         <Text>
@@ -37,14 +37,14 @@ const ProjectsPage = props => {
         </Text>
         <ul id="commercial-projects">
           {props.data.commercialProjects.edges.map(({ node: { frontmatter: project } }) => (
-            <li key={project.title} className="border-lightgrey [&:not(:last-of-type)]:border-b">
+            <li key={project.title} className="border-gray-200 [&:not(:last-of-type)]:border-b">
               {renderProject(project)}
             </li>
           ))}
         </ul>
       </section>
       <section className="md:my-20">
-        <header className="border-b border-lightgrey py-8">
+        <header className="border-b border-gray-200 py-8">
           <Heading size="small">Open Source & Fun Projects</Heading>
         </header>
         <Text>
@@ -53,7 +53,7 @@ const ProjectsPage = props => {
         </Text>
         <ul id="fun-projects">
           {props.data.funProjects.edges.map(({ node: { frontmatter: project } }) => (
-            <li key={project.title} className="border-lightgrey [&:not(:last-of-type)]:border-b">
+            <li key={project.title} className="border-gray-200 [&:not(:last-of-type)]:border-b">
               {renderProject(project)}
             </li>
           ))}

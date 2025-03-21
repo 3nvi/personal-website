@@ -10,7 +10,7 @@ const Page404 = props => (
   <Layout>
     <SEO title="Not Found" />
     <div className="flex flex-grow items-center justify-evenly">
-      <header className="max-lg:py-8d border-black max-lg:border-y-8">
+      <header className="max-lg:py-8d border-gray-700 max-lg:border-y-8">
         <Heading>
           404 <br /> Not found
         </Heading>

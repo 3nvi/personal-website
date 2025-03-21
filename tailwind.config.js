@@ -9,13 +9,25 @@ module.exports = {
     container: {
       center: true,
     },
+    // colors: {
+    //   gray:
+    // }
     extend: {
       colors: {
         primary: '#6a61c7',
         accent: '#CC26E8',
-        darkgrey: '#28313B',
-        grey: '#8B8B8B',
-        lightgrey: '#eee',
+        gray: {
+          50: '#f9f9f9',
+          100: '#f5f5f5',
+          200: '#eeeeee',
+          300: '#b3b3b3',
+          400: '#8B8B8B',
+          500: '#6b6b6b',
+          600: '#4a4a4a',
+          700: '#28313B',
+          800: '#1a1f25',
+          900: '#0d1013',
+        },
       },
     },
     screens: {

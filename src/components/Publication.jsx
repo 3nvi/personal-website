@@ -28,7 +28,7 @@ function Publication({
   `);
 
   return (
-    <article className="box-border w-[550px] rounded-sm border border-lightgrey p-5 max-md:w-full">
+    <article className="box-border w-[550px] rounded-sm border border-gray-200 p-5 max-md:w-full">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -61,14 +61,14 @@ function Publication({
       <a href={href} target="_blank" rel="noopener noreferrer" className="group">
         <Img fluid={bannerImgData} alt={title} className="min-h-[200px] rounded" />
 
-        <h2 className="my-3 text-xl font-bold leading-6 text-darkgrey group-hover:underline">
+        <h2 className="my-3 text-xl font-bold leading-6 text-gray-700 group-hover:underline">
           {title}
         </h2>
       </a>
 
       <div className="flex items-center text-sm">
         <time>{dayjs(createdAt).format('MMM DD, YYYY')}</time>
-        <span className="mx-2 h-[3px] w-[3px] rounded-full bg-darkgrey" />
+        <span className="mx-2 h-[3px] w-[3px] rounded-full bg-gray-700" />
         <span>{timeInMinutes} min read</span>
       </div>
 
