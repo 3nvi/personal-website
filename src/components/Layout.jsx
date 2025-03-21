@@ -7,55 +7,44 @@ import MediumSVG from '../assets/icons/medium.svg';
 import GithubSVG from '../assets/icons/github.svg';
 import LinkedinSVG from '../assets/icons/linkedin.svg';
 
+const SocialLink = ({ href, title, 'aria-label': ariaLabel, icon: Icon }) => (
+  <a href={href} title={title} aria-label={ariaLabel} className="p-2.5">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:translate-y-[-4px] hover:bg-gray-700">
+      <Icon className="h-3 w-3 fill-white" />
+    </div>
+  </a>
+);
+
 const Layout = ({ children }) => (
   <div className="container flex min-h-screen flex-col p-5 text-gray-700">
     <NavHeader />
     <main className="flex flex-grow flex-col">{children}</main>
     <footer className="relative">
       <address className="flex justify-center">
-        <a
+        <SocialLink
           href={`https://twitter.com/${twitterHandle}`}
           title="Twitter"
           aria-label="Twitter"
-          className="p-2.5"
-        >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:translate-y-[-4px] hover:bg-gray-700">
-            <TwitterSVG className="h-3 w-3 fill-white" />
-          </div>
-        </a>
-
-        <a
+          icon={TwitterSVG}
+        />
+        <SocialLink
           href={`https://medium.com/@${mediumHandle}`}
           title="Medium"
           aria-label="Medium"
-          className="p-2.5"
-        >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:translate-y-[-4px] hover:bg-gray-700">
-            <MediumSVG className="h-3 w-3 fill-white" />
-          </div>
-        </a>
-
-        <a
+          icon={MediumSVG}
+        />
+        <SocialLink
           href={`https://github.com/${githubHandle}`}
           title="Github"
           aria-label="Github"
-          className="p-2.5"
-        >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:translate-y-[-4px] hover:bg-gray-700">
-            <GithubSVG className="h-3 w-3 fill-white" />
-          </div>
-        </a>
-
-        <a
+          icon={GithubSVG}
+        />
+        <SocialLink
           href={`https://linkedin.com/in/${linkedinHandle}`}
           title="Linkedin"
           aria-label="Linkedin"
-          className="p-2.5"
-        >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-400 transition-colors hover:translate-y-[-4px] hover:bg-gray-700">
-            <LinkedinSVG className="h-3 w-3 fill-white" />
-          </div>
-        </a>
+          icon={LinkedinSVG}
+        />
       </address>
       <p className="absolute bottom-4 right-0 hidden lg:block">© Aggelos Arvanitakis</p>
     </footer>
