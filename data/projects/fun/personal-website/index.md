@@ -10,5 +10,5 @@ githubUrl: https://github.com/3nvi/personal-website
 tags:
   - React
   - Gatsby
-  - Emotion
+  - TailwindCSS
 ---
