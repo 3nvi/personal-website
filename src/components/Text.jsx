@@ -1,27 +1,22 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 
-const Text = styled.p(props => ({
-  maxWidth: props.limited ? '500px' : undefined,
-  lineHeight: '1.7rem',
-  margin: `${props.theme.spacing.md} 0`,
-  color: props.theme.colors.grey,
-  ...(props.spaced && {
-    letterSpacing: '0.15rem',
-    '@media(max-width: 767px)': {
-      letterSpacing: '0.1rem',
-    },
-  }),
-}));
+const Text = ({ children, spaced = false, ...props }) => (
+  <p
+    className={clsx(
+      'my-8 leading-[1.7rem] text-gray-400',
+      spaced && 'tracking-widest md:tracking-[0.15rem]'
+    )}
+    {...props}
+  >
+    {children}
+  </p>
+);
 
 Text.propTypes = {
+  children: PropTypes.node.isRequired,
   spaced: PropTypes.bool,
-  limited: PropTypes.bool,
-};
-
-Text.defaultProps = {
-  spaced: false,
-  limited: false,
 };
 
 export default Text;

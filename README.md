@@ -2,7 +2,7 @@
 
 ## Related
 
-This is my personal website implemented using gatsby, emotion & react.
+This is my personal website implemented using gatsby, tailwind & react.
 It contains all my articles and the work that I've done that I'm allowed
 to publicly disclose.
 

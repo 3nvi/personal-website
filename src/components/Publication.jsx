@@ -1,57 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import dayjs from 'dayjs';
 import Img from 'gatsby-image';
-import Helmet from 'react-helmet';
 import Text from './Text';
-import { graphql, useStaticQuery } from 'gatsby';
-
-const ArticleWell = styled.article`
-  padding: 20px;
-  border: ${({ theme }) => `1px solid ${theme.colors.lightgrey}`};
-  border-radius: 2px;
-  width: 550px;
-  box-sizing: border-box;
-
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
-const ArticleHeading = styled.h2`
-  font-size: 1.2rem;
-  color: ${({ theme }) => theme.colors.black};
-  margin: ${({ theme }) => `${theme.spacing.sm} 0`};
-  line-height: 1.5rem;
-`;
-
-const ArticleBanner = styled(Img)`
-  border-radius: 4px;
-  min-height: 200px;
-`;
-
-const Meta = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 0.8rem;
-`;
-
-const Separator = styled.span`
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  margin: ${({ theme }) => `0 ${theme.spacing.xs}`};
-  background-color: ${({ theme }) => theme.colors.black};
-`;
-
-const Anchor = styled.a`
-  &:hover {
-    ${ArticleHeading} {
-      text-decoration: underline;
-    }
-  }
-`;
+import Helmet from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 function Publication({
   href,
@@ -63,21 +16,19 @@ function Publication({
   publisher,
 }) {
   const creationDateToIso = createdAt.replace(/\//, '-');
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            image
-            logo
-          }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          image
+          logo
         }
       }
-    `
-  );
+    }
+  `);
 
   return (
-    <ArticleWell>
+    <article className="box-border w-[550px] rounded-sm border border-gray-200 p-5 max-md:w-full">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -107,19 +58,22 @@ function Publication({
           })}
         </script>
       </Helmet>
-      <header>
-        <Anchor href={href} rel="noopener noreferrer" target="_blank">
-          <ArticleBanner alt="Article Banner" fluid={bannerImgData} />
-          <ArticleHeading>{title}</ArticleHeading>
-        </Anchor>
-      </header>
-      <Meta>
-        <date>{dayjs(createdAt).format('DD MMM YYYY')}</date>
-        <Separator />
-        <time>{timeInMinutes} min</time>
-      </Meta>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="group">
+        <Img fluid={bannerImgData} alt={title} className="min-h-[200px] rounded" />
+
+        <h2 className="my-3 text-xl font-bold leading-6 text-gray-700 group-hover:underline">
+          {title}
+        </h2>
+      </a>
+
+      <div className="flex items-center text-sm">
+        <time>{dayjs(createdAt).format('MMM DD, YYYY')}</time>
+        <span className="mx-2 h-[3px] w-[3px] rounded-full bg-gray-700" />
+        <span>{timeInMinutes} min read</span>
+      </div>
+
       <Text>{description}</Text>
-    </ArticleWell>
+    </article>
   );
 }
 
@@ -130,8 +84,7 @@ Publication.propTypes = {
   description: PropTypes.string.isRequired,
   publisher: PropTypes.string.isRequired,
   bannerImgData: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
 };
-
-Publication.defaultProps = {};
 
 export default Publication;

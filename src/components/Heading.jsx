@@ -1,32 +1,22 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import clsx from 'clsx';
 
-const Heading = styled.h1`
-  font-family: 'Playfair Display', 'FuturaNew', sans-serif;
-
-  @media only screen and (max-width: 767px) {
-    font-size: 3.25rem;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    font-size: ${props => (props.size === 'small' ? '4rem' : '6.5rem')};
-  }
-
-  @media only screen and (min-width: 1200px) and (max-width: 1599px) {
-    font-size: ${props => (props.size === 'small' ? '4rem' : '8rem')};
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: ${props => (props.size === 'small' ? '5rem' : '10rem')};
-  }
-`;
+const Heading = ({ children, size = 'large' }) => (
+  <h1
+    className={clsx(
+      'font-playfair text-5xl',
+      size === 'small' && 'md:text-6xl lg:text-6xl xl:text-7xl',
+      size === 'large' && 'md:text-8xl lg:text-9xl xl:text-[10rem]'
+    )}
+  >
+    {children}
+  </h1>
+);
 
 Heading.propTypes = {
+  children: PropTypes.node.isRequired,
   size: PropTypes.oneOf(['small', 'large']),
-};
-
-Heading.defaultProps = {
-  size: 'large',
 };
 
 export default Heading;

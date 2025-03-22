@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-exports.handler = function(event, context, callback) {
+exports.handler = function (event, context, callback) {
   if (event.httpMethod !== 'POST') {
     return callback(null, { statusCode: 405, body: 'Method Not Allowed' });
   }
@@ -24,7 +24,7 @@ exports.handler = function(event, context, callback) {
       subject: `${subject} [${email}]`,
       text: body,
     },
-    function(error, info) {
+    function (error, info) {
       if (error) {
         callback(error);
       } else {

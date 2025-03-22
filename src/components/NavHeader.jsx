@@ -1,142 +1,8 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from '@emotion/styled';
 import { disablePageScrolling } from '../utils/helpers';
-
-const FlexWrapper = styled.header`
-  display: flex;
-  align-items: center;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-`;
-
-const NavGroup = styled.ul`
-  @media only screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-  }
-
-  @media only screen and (max-width: 767px) {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: ${props => (props.isMobileMenuVisible ? 'flex' : 'none')};
-    background-color: rgba(255, 255, 255, 0.975);
-    z-index: 1;
-  }
-`;
-
-const NavGroupItem = styled.li`
-  display: flex;
-  align-items: center;
-
-  a {
-    position: relative;
-    letter-spacing: 0.2rem;
-    text-decoration: none;
-    padding: ${({ theme }) => theme.spacing.sm};
-    color: ${({ theme }) => theme.colors.black};
-  }
-
-  @media only screen and (max-width: 767px) {
-    margin-bottom: ${({ theme }) => theme.spacing.sm};
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    margin-right: ${({ theme }) => theme.spacing.sm};
-  }
-
-  @media only screen and (min-width: 1200px) {
-    margin-right: ${({ theme }) => theme.spacing.md};
-  }
-`;
-
-const MobileNavGroupJewel = styled.button`
-  position: absolute;
-  top: ${({ theme }) => theme.spacing.sm};
-  right: ${({ theme }) => theme.spacing.sm};
-  z-index: 1009;
-  padding: 15px;
-  background: none;
-  border: none;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
-
-  &::before,
-  &::after {
-    transition: all 0.2s linear;
-    content: '';
-    display: block;
-    width: 30px;
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-
-  &::before {
-    margin-bottom: ${props => (!props.isOpen ? '15px' : 0)};
-    transform: ${props => (props.isOpen ? 'translateY(3px) rotate(45deg)' : undefined)};
-  }
-
-  &::after {
-    transform: ${props => (props.isOpen ? 'translateY(3px) rotate(-45deg)' : undefined)};
-  }
-`;
-
-const PageLink = styled(props => <Link {...props} activeClassName="active" />)`
-  &.active {
-    font-weight: bold;
-  }
-
-  &::after {
-    position: absolute;
-    width: ${({ theme }) => `calc(100% - 2 * ${theme.spacing.sm})`};
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  &.active::after {
-    content: '';
-    height: 5px;
-    border-radius: 25px;
-    background-image: ${({ theme }) =>
-      `linear-gradient(-45deg, ${theme.colors.primary}, ${theme.colors.accent})`};
-  }
-
-  &:not(.active):hover::after {
-    content: '';
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-`;
-
-const HomeLink = styled(PageLink)`
-  font-size: 1.25rem;
-  font-weight: bold;
-
-  &.active::after {
-    display: none;
-  }
-
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    display: none;
-  }
-`;
+import clsx from 'clsx';
 
 const NavHeader = () => {
   const [isMobileMenuVisible, setMobileMenuVisibility] = React.useState(false);
@@ -145,53 +11,94 @@ const NavHeader = () => {
     disablePageScrolling(isMobileMenuVisible);
   }, [isMobileMenuVisible]);
 
-  const { logo } = useStaticQuery(
-    graphql`
-      query {
-        logo: file(name: { eq: "favicon" }, relativeDirectory: { eq: "img" }) {
-          childImageSharp {
-            fixed(width: 30, height: 30) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+  const { logo } = useStaticQuery(graphql`
+    query {
+      logo: file(name: { eq: "favicon" }, relativeDirectory: { eq: "img" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
       }
-    `
+    }
+  `);
+
+  const PageLink = ({ to, children, className = '' }) => (
+    <Link
+      to={to}
+      activeClassName="active"
+      className={clsx(
+        'relative p-4 tracking-[0.2rem] text-gray-700 no-underline',
+        'after:absolute after:bottom-0 after:left-0 after:right-0 after:mx-auto after:w-[calc(100%-1.5rem)]',
+        '[&.active]:font-bold',
+        "[&.active]:after:h-[5px] [&.active]:after:rounded-[25px] [&.active]:after:content-['']",
+        '[&.active]:after:bg-gradient-to-l [&.active]:after:from-primary [&.active]:after:to-accent',
+        "hover:[&:not(.active)]:after:h-px hover:[&:not(.active)]:after:bg-gray-700 hover:[&:not(.active)]:after:content-['']",
+        className
+      )}
+    >
+      {children}
+    </Link>
   );
 
   return (
-    <FlexWrapper>
-      <Nav>
-        <NavGroup>
-          <NavGroupItem>
-            <Img fixed={logo.childImageSharp.fixed} alt="logo" />
-            <HomeLink to="/">Aggelos.</HomeLink>
-          </NavGroupItem>
-        </NavGroup>
-        <NavGroup isMobileMenuVisible={isMobileMenuVisible}>
-          <NavGroupItem>
+    <header className="flex items-center max-md:mb-16">
+      <nav className="flex flex-grow justify-between">
+        <ul className="md:flex md:items-center">
+          <li className="max-md:hidden">
+            <Link to="/" className="flex items-center space-x-4">
+              <Img fixed={logo.childImageSharp.fixed} alt="logo" />
+              <span className="text-xl font-bold tracking-[0.2rem] max-lg:hidden">Aggelos.</span>
+            </Link>
+          </li>
+        </ul>
+        <ul
+          className={clsx(
+            'md:flex md:items-center',
+            'max-md:fixed max-md:left-0 max-md:top-0 max-md:h-screen max-md:w-screen',
+            'max-md:flex-col max-md:items-center max-md:justify-center max-md:text-center',
+            isMobileMenuVisible ? 'max-md:flex' : 'max-md:hidden',
+            'max-md:z-10 max-md:bg-white/[0.975]',
+            'max-md:gap-y-4 md:max-lg:gap-x-4 lg:gap-x-8'
+          )}
+        >
+          <li className="flex">
             <PageLink to="/">Home</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex">
             <PageLink to="/about">About</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex">
             <PageLink to="/publications">Publications</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex">
             <PageLink to="/projects">Projects</PageLink>
-          </NavGroupItem>
-          <NavGroupItem>
+          </li>
+          <li className="flex max-md:mb-3 md:max-lg:mr-3 lg:mr-4">
             <PageLink to="/contact">Contact</PageLink>
-          </NavGroupItem>
-        </NavGroup>
-      </Nav>
-      <MobileNavGroupJewel
+          </li>
+        </ul>
+      </nav>
+      <button
         aria-label="Toggle menu"
-        isOpen={isMobileMenuVisible}
+        className={clsx(
+          'md:hidden',
+          'absolute',
+          'right-3 top-3',
+          'z-[1009]',
+          'p-4',
+          'bg-transparent',
+          'border-none',
+          "before:block before:h-px before:w-[30px] before:bg-gray-700 before:content-['']",
+          'before:transition-all before:duration-200 before:ease-linear',
+          isMobileMenuVisible ? 'before:translate-y-[3px] before:rotate-45' : 'before:mb-[15px]',
+          "after:block after:h-px after:w-[30px] after:bg-gray-700 after:content-['']",
+          'after:transition-all after:duration-200 after:ease-linear',
+          isMobileMenuVisible ? 'after:translate-y-[3px] after:-rotate-45' : ''
+        )}
         onClick={() => setMobileMenuVisibility(!isMobileMenuVisible)}
       />
-    </FlexWrapper>
+    </header>
   );
 };
 
