@@ -41,22 +41,15 @@ const NavHeader = () => {
     </Link>
   );
 
-  const HomeLink = ({ children, ...props }) => (
-    <PageLink
-      {...props}
-      className="text-xl font-bold leading-none max-lg:hidden [&.active]:after:hidden"
-    >
-      {children}
-    </PageLink>
-  );
-
   return (
     <header className="flex items-center max-md:mb-16">
       <nav className="flex flex-grow justify-between">
         <ul className="md:flex md:items-center">
-          <li className="flex items-center max-md:hidden">
-            <Img fixed={logo.childImageSharp.fixed} alt="logo" />
-            <HomeLink to="/">Aggelos.</HomeLink>
+          <li className="max-md:hidden">
+            <Link to="/" className="flex items-center space-x-4">
+              <Img fixed={logo.childImageSharp.fixed} alt="logo" />
+              <span className="text-xl font-bold tracking-[0.2rem] max-lg:hidden">Aggelos.</span>
+            </Link>
           </li>
         </ul>
         <ul
