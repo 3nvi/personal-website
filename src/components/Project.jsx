@@ -11,48 +11,10 @@ import { disablePageScrolling } from '../utils/helpers';
 import clsx from 'clsx';
 
 const clickableImgStyle = 'rounded overflow-hidden border border-gray-200 p-0 cursor-pointer';
-
-const ProjectBox = ({ children }) => (
-  <article className="box-border flex w-full flex-row-reverse py-14 max-lg:w-full max-lg:flex-col lg:flex-row-reverse">
-    {children}
-  </article>
-);
-
-const ProjectHeading = ({ children, ...props }) => (
-  <h2 className="mb-3 text-3xl font-bold text-gray-700 hover:underline" {...props}>
-    {children}
-  </h2>
-);
-
-const BannerWrapper = ({ children, ...props }) => (
-  <button className={clsx(clickableImgStyle, 'm-0 max-h-[350px] w-full')} {...props}>
-    <div className="max-h-inherit">{children}</div>
-  </button>
-);
-
-const ScreenshotListItem = ({ children, ...props }) => (
-  <li>
-    <button className={clsx(clickableImgStyle, 'm-2')} {...props}>
-      {children}
-    </button>
-  </li>
-);
-
-const ScreenshotList = ({ children }) => <ul className="-mx-2 flex flex-wrap">{children}</ul>;
-
-const TagContainer = ({ children }) => <ul className="mt-8 flex flex-wrap">{children}</ul>;
-
-const Tag = ({ children }) => (
-  <li className="mb-3 mr-3 rounded-[25px] bg-gray-200 px-3 py-1 text-center text-sm text-gray-700">
-    #{children}
-  </li>
-);
-
 const screenshotImgWrapperStyle = {
   width: '60px',
   height: '60px',
 };
-
 const reactModalProps = { shouldReturnFocusAfterClose: false };
 
 function Project({
@@ -89,7 +51,7 @@ function Project({
   ];
 
   return (
-    <ProjectBox>
+    <article className="box-border flex w-full flex-row-reverse py-14 max-lg:w-full max-lg:flex-col lg:flex-row-reverse">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -114,14 +76,19 @@ function Project({
       <div className="lg:w-1/2 lg:pl-3">
         <header>
           <a href={href} rel="noopener noreferrer" target="_blank">
-            <ProjectHeading>{title}</ProjectHeading>
+            <h2 className="mb-3 text-3xl font-bold text-gray-700 hover:underline">{title}</h2>
           </a>
           {!!tags.length && (
-            <TagContainer>
+            <ul className="mt-8 flex flex-wrap">
               {tags.map(tag => (
-                <Tag key={tag}>{tag}</Tag>
+                <li
+                  key={tag}
+                  className="mb-3 mr-3 rounded-[25px] bg-gray-200 px-3 py-1 text-center text-sm text-gray-700"
+                >
+                  #{tag}
+                </li>
               ))}
-            </TagContainer>
+            </ul>
           )}
         </header>
         <Text>{description}</Text>
@@ -134,20 +101,30 @@ function Project({
         )}
       </div>
       <div className="lg:w-1/2 lg:pr-3">
-        <BannerWrapper onClick={() => showLightboxFromIndex(0)}>
-          <Img alt="Project Banner" fluid={bannerImgData} />
-        </BannerWrapper>
-        <ScreenshotList>
+        <button
+          className={clsx(clickableImgStyle, 'm-0 max-h-[350px] w-full')}
+          onClick={() => showLightboxFromIndex(0)}
+        >
+          <div className="max-h-inherit">
+            <Img alt="Project Banner" fluid={bannerImgData} />
+          </div>
+        </button>
+        <ul className="-mx-2 flex flex-wrap">
           {screenshotListImgData.map((screenshotImgData, index) => (
-            <ScreenshotListItem key={index} onClick={() => showLightboxFromIndex(index + 1)}>
-              <Img
-                style={screenshotImgWrapperStyle}
-                alt="Project Screenshot"
-                fluid={screenshotImgData}
-              />
-            </ScreenshotListItem>
+            <li key={index}>
+              <button
+                className={clsx(clickableImgStyle, 'm-2')}
+                onClick={() => showLightboxFromIndex(index + 1)}
+              >
+                <Img
+                  style={screenshotImgWrapperStyle}
+                  alt="Project Screenshot"
+                  fluid={screenshotImgData}
+                />
+              </button>
+            </li>
           ))}
-        </ScreenshotList>
+        </ul>
       </div>
       {isLightboxVisible && (
         <Lightbox
@@ -169,7 +146,7 @@ function Project({
           }
         />
       )}
-    </ProjectBox>
+    </article>
   );
 }
 
