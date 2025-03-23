@@ -20,5 +20,15 @@ export const onRenderBody = ({ setHeadComponents }) => {
       href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap"
       rel="stylesheet"
     />,
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
+          :root {
+            --tw-gradient-from-position: ;
+            --tw-gradient-to-position: ;
+          }
+        `,
+      }}
+    />,
   ]);
 };
