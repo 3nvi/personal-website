@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './data/**/*.{js,jsx,ts,tsx,md}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
       futura: ['FuturaNew', 'sans-serif'],
@@ -9,9 +9,6 @@ module.exports = {
     container: {
       center: true,
     },
-    // colors: {
-    //   gray:
-    // }
     extend: {
       colors: {
         primary: '#6a61c7',
