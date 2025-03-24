@@ -1,61 +1,55 @@
 import React from 'react';
 import axios from 'axios';
-import AutosizeableTextarea from 'react-textarea-autosize';
-import { Form as FormikForm, Formik, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import TextareaAutosize from 'react-textarea-autosize';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import Layout from '../components/Layout';
 import Text from '../components/Text';
 import SEO from '../components/SEO';
 import Button from '../components/Button';
 import Heading from '../components/Heading';
 
-const FormError = ({ children }) => <p className="mt-1 text-xs text-red-600">{children}</p>;
+const formFieldClasses = 'w-full border-b border-gray-200 py-2 outline-none focus:border-gray-400';
 
-const Input = ({ form, field, ...rest }) => (
-  <input
-    {...field}
-    {...rest}
-    className="w-full border-0 border-b border-gray-200 py-2 outline-none focus:border-gray-400"
-  />
-);
-
-const Textarea = ({ form, field, ...rest }) => (
-  <AutosizeableTextarea
-    {...field}
-    {...rest}
-    className="w-full border-0 border-b border-gray-200 py-2 outline-none focus:border-gray-400"
-  />
-);
-
-const initialValues = {
-  email: '',
-  subject: '',
-  body: '',
-};
-
-const validationSchema = yup.object().shape({
-  email: yup
+const validationSchema = z.object({
+  email: z
     .string()
     .email('Please enter a valid email address')
-    .required('Please enter an email to respond to'),
-  subject: yup
+    .min(1, 'Please enter an email to respond to'),
+  subject: z
     .string()
     .max(40, 'Please enter no more than 40 characters')
-    .required('Please enter a subject for your message'),
-  body: yup.string().required('Please enter a message'),
+    .min(1, 'Please enter a subject for your message'),
+  body: z.string().min(1, 'Please enter a message'),
 });
 
 const ContactPage = () => {
   const [isMessageSent, setMessageSent] = React.useState(false);
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, isSubmitting, isValid, touchedFields },
+    setError,
+  } = useForm({
+    resolver: zodResolver(validationSchema),
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      subject: '',
+      body: '',
+    },
+  });
 
-  const sendMessage = async (values, { setSubmitting }) => {
+  const onSubmit = async values => {
     try {
       await axios.post('/.netlify/functions/contact', values);
-      setSubmitting(false);
       setMessageSent(true);
     } catch (err) {
-      alert(err);
-      setSubmitting(false);
+      setError('root.serverError', {
+        message: err.response.data.message,
+      });
     }
   };
 
@@ -78,42 +72,54 @@ const ContactPage = () => {
             Your message has been sent!
           </div>
         ) : (
-          <Formik
-            initialValues={initialValues}
-            onSubmit={sendMessage}
-            validationSchema={validationSchema}
-          >
-            {({ isSubmitting, isValid }) => (
-              <FormikForm className="space-y-12 pb-4" noValidate>
-                <fieldset>
-                  <label htmlFor="email" className="text-sm text-gray-500">
-                    Your email address
-                  </label>
-                  <Field component={Input} type="email" name="email" id="email" />
-                  <ErrorMessage component={FormError} name="email" />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor="subject" className="text-sm text-gray-500">
-                    Subject
-                  </label>
-                  <Field component={Input} type="text" name="subject" id="subject" />
-                  <ErrorMessage component={FormError} name="subject" />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor="body" className="text-sm text-gray-500">
-                    Message
-                  </label>
-                  <Field component={Textarea} type="number" name="body" id="body" />
-                  <ErrorMessage component={FormError} name="body" />
-                </fieldset>
-                <div className="grid">
-                  <Button type="submit" disabled={isSubmitting || !isValid}>
-                    Send message
-                  </Button>
-                </div>
-              </FormikForm>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-12 pb-4" noValidate>
+            <fieldset className="space-y-1">
+              <label htmlFor="email" className="text-sm text-gray-500">
+                Your email address
+              </label>
+              <input {...register('email')} type="email" id="email" className={formFieldClasses} />
+              {errors.email && touchedFields.email && (
+                <p className="text-xs text-red-600">{errors.email.message}</p>
+              )}
+            </fieldset>
+            <fieldset className="space-y-1">
+              <label htmlFor="subject" className="text-sm text-gray-500">
+                Subject
+              </label>
+              <input
+                {...register('subject')}
+                type="text"
+                id="subject"
+                className={formFieldClasses}
+              />
+              {errors.subject && touchedFields.subject && (
+                <p className="text-xs text-red-600">{errors.subject.message}</p>
+              )}
+            </fieldset>
+            <fieldset className="space-y-1">
+              <label htmlFor="body" className="text-sm text-gray-500">
+                Message
+              </label>
+              <Controller
+                name="body"
+                control={control}
+                render={({ field }) => <TextareaAutosize {...field} className={formFieldClasses} />}
+              />
+              {errors.body && touchedFields.body && (
+                <p className="text-xs text-red-600">{errors.body.message}</p>
+              )}
+            </fieldset>
+            {errors.root && (
+              <div className="my-2">
+                <p className="text-xs text-red-600">{errors.root.serverError.message}</p>
+              </div>
             )}
-          </Formik>
+            <div className="grid">
+              <Button type="submit" disabled={isSubmitting || !isValid}>
+                Send message
+              </Button>
+            </div>
+          </form>
         )}
       </div>
     </Layout>
